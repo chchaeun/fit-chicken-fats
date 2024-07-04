@@ -23,7 +23,7 @@ const Sidebar = ({ selectedItems }) => {
       <table className={tableWrapper}>
         <thead className={tableHeader}>
           <tr>
-            <th> 번호 </th>
+            <th> No. </th>
             <th> 브랜드 </th>
             <th> 제품명 </th>
             <th> 칼로리(kcal) </th>
@@ -35,24 +35,25 @@ const Sidebar = ({ selectedItems }) => {
             <th> 콜레스테롤(mg) </th>
             <th> 포화지방산(g) </th>
             <th> 중량(g) </th>
-            <th> 가격 </th>
+            <th> 제조회사 </th>
           </tr>
         </thead>
         <tbody className={tableBody}>
           {selectedItems.map((item) => (
             <tr key={item.id} className={tableRow}>
               <td>{item.id}</td>
-              <td>{item.brand}</td>
-              <td>{item.name}</td>
-              <td>{item.kcal}</td>
+              <td>{item.brand ? item.brand : "-"}</td>
+              <td>{item.product_name}</td>
+              <td>{item.calories}</td>
               <td>{item.protein}</td>
               <td> {item.fat}</td>
               <td> {item.calbohydrate}</td>
               <td> {item.sugars}</td>
               <td> {item.sodium}</td>
               <td> {item.cholesterol}</td>
-              <td> {item.saturatedFat}</td>
+              <td> {item.saturated_fat}</td>
               <td> {item.weight}</td>
+              <td>{item.manufacturer ? item.manufacturer : "-"}</td>
             </tr>
           ))}
         </tbody>
