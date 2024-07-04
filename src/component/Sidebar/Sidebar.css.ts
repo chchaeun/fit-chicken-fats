@@ -1,10 +1,12 @@
 import { style } from "@vanilla-extract/css";
 
 export const wrapper = style({
+  width: "1000px",
   backgroundColor: "seagreen",
   display: "flex",
   alignItems: "center",
   flexDirection: "column",
+  margin: "auto",
 });
 
 export const header = style({
@@ -12,7 +14,7 @@ export const header = style({
   alignItems: "center",
   width: "100%",
   justifyContent: "center",
-  margin: "20px",
+  marginTop: "50px",
 });
 
 export const title = style({
@@ -22,7 +24,8 @@ export const title = style({
 });
 
 export const closeButton = style({
-  fontSize: "50px",
+  fontSize: "30px",
+  marginLeft: "-50px",
   marginRight: "20px",
   opacity: "0.5",
   ":hover": {
@@ -33,7 +36,7 @@ export const closeButton = style({
 export const tableWrapper = style({
   backgroundColor: "beige",
   borderCollapse: "collapse",
-  margin: "10px",
+  margin: "50px",
   width: "auto",
   height: "auto",
 });
@@ -45,7 +48,9 @@ export const tableHeader = style({
   fontSize: "15px",
 });
 
-export const tableBody = style({});
+export const tableBody = style({
+  textAlign: "center",
+});
 
 export const tableRow = style({
   color: "#666B85",

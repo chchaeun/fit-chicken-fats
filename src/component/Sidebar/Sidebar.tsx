@@ -17,7 +17,7 @@ const Sidebar = ({ selectedItems }) => {
   return (
     <div className={wrapper}>
       <div className={header}>
-        <div className={title}> 🍗 선택 비교 창 🍗 </div>
+        <div className={title}> 🍗 내가 가장 원하는 닭가슴살 제품은 ? 🍗 </div>
         <FiX className={closeButton} onClick={handleOnClose} />
       </div>
       <table className={tableWrapper}>
@@ -35,7 +35,7 @@ const Sidebar = ({ selectedItems }) => {
             <th> 콜레스테롤(mg) </th>
             <th> 포화지방산(g) </th>
             <th> 중량(g) </th>
-            <th> 제조회사 </th>
+            <th> 제조사 </th>
           </tr>
         </thead>
         <tbody className={tableBody}>
