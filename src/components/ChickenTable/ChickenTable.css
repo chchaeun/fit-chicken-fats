@@ -1,0 +1,18 @@
+.table-container {
+    margin: 20px;
+  }
+  
+  .chicken-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .chicken-table th, .chicken-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .chicken-table th {
+    background-color: #f4f4f4;
+  }
+  
