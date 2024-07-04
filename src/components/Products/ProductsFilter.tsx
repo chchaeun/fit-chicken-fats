@@ -25,7 +25,7 @@ const ProductsFilter: React.FC<ProductsFilterProps> = ({onFilter}) => {
     fetchData();
   }, []);
 
-  // 필터터된 데이터
+  // 브랜드별 필터링
   useEffect(() => {
     const filteredData = selectedBrands.length
       ? products.filter((product) => selectedBrands.includes(product.brand))
