@@ -1,10 +1,20 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { ChickenData } from "../../types/ChickenData";
 import "./ChickenTable.css";
 
 const ChickenTable: React.FC = () => {
     const [data, setData] = React.useState<ChickenData[]>([]);
     const [selected, setSelected] = React.useState<ChickenData[]>([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 15;
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+    const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+    const pageNumbers = [];
+    for (let i = 1; i <= Math.ceil(data.length / itemsPerPage); i++) {
+        pageNumbers.push(i);
+    }
 
     useEffect(() => {
         fetch("../../../public/data.json")
@@ -35,7 +45,7 @@ const ChickenTable: React.FC = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {data.slice(0, 15).map((item) => (
+                    {currentItems.map((item) => (
                         <tr key={item.id}>
                             <td>
                                 <input
@@ -54,6 +64,16 @@ const ChickenTable: React.FC = () => {
                     ))}
                 </tbody>
             </table>
+            <div className="pagination">
+                {pageNumbers.map((number) => (
+                    <button
+                        key={number}
+                        onClick={() => paginate(number)}
+                    >
+                        {number}
+                    </button>
+                ))}
+            </div>
         </div>
     );
 };

@@ -1,18 +1,36 @@
 .table-container {
     margin: 20px;
-  }
-  
-  .chicken-table {
+}
+
+.chicken-table {
     width: 100%;
     border-collapse: collapse;
-  }
-  
-  .chicken-table th, .chicken-table td {
+}
+
+.chicken-table th,
+.chicken-table td {
     border: 1px solid #ddd;
     padding: 8px;
-  }
-  
-  .chicken-table th {
+}
+
+.chicken-table th {
     background-color: #f4f4f4;
-  }
-  
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination button {
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    margin: 0 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.pagination button:hover {
+    background-color: #ddd;
+}
