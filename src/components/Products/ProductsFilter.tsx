@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { brandCheckbox, brandFilter, container, filterSection, productContainer, productDetail } from './Manufacture.css';
+import { brandCheckbox, brandFilter, container, filterSection, productContainer, productDetail } from './ProductsFilter.css';
 
 interface Product {
   manufacturer: string;
@@ -17,7 +17,7 @@ interface Product {
   id: number;
 }
 
-const Manufacture: React.FC = () => {
+const ProductsFilter: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
 
@@ -107,4 +107,4 @@ const Manufacture: React.FC = () => {
   );
 };
 
-export default Manufacture;
+export default ProductsFilter;

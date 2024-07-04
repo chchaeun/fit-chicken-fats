@@ -1,12 +1,12 @@
 import './App.css'
-import Manufacture from './components/manufacturer/ManufactureFilter'
+import ProductsFilter from './components/Products/ProductsFilter';
 
 function App() {
 
   return (
     <div>
       <h1>Product List</h1>
-      <Manufacture />
+      <ProductsFilter />
     </div>
   )
 }
