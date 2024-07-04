@@ -9,8 +9,14 @@ import {
   title,
   wrapper,
 } from "./Sidebar.css";
+import { IChickenData } from "../../types/ChickenData";
+import { FC } from "react";
 
-const Sidebar = ({ selectedItems }) => {
+type TSidebarProps = {
+  selectedItems: IChickenData[];
+}
+
+const Sidebar: FC<TSidebarProps> = ({ selectedItems }) => {
 
   const handleOnClose = () => {};
 

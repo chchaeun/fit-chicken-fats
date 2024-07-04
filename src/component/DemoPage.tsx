@@ -1,16 +1,16 @@
 /* 
-  Data, 메인페이지 적용 전 
-  체크박스 선택 시 사이드 바 나타나는 기능 생성 위해 
+  Data, 메인페이지 적용 전 기능 테스트 위해
   임시 데모 페이지 구현
 */
 
 import { useEffect, useState } from "react";
 import Sidebar from "./Sidebar/Sidebar";
+import { IChickenData } from "../types/ChickenData";
 
 const DemoPage = () => {
-  const [selectedItems, setSelectedItems] = useState([]);
+  const [selectedItems, setSelectedItems] = useState<IChickenData[]>([]);
 
-  const handleCheckboxChange = (id, item) => {
+  const handleCheckboxChange = (id: number, item: IChickenData) => {
     const foundItem = selectedItems.find((i) => i.id === id);
 
     if (foundItem) {
@@ -20,8 +20,7 @@ const DemoPage = () => {
     }
   };
 
-  const [data, setData] = useState([]);
-
+  const [data, setData] = useState<IChickenData[]>([]);
   useEffect(() => {
     fetch("/data.json")
       .then((res) => res.json())
