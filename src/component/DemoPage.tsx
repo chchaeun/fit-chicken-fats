@@ -33,7 +33,7 @@ const DemoPage = () => {
       <div>
         {/* 체크박스 */}
         {data.map((item) => (
-          <label>
+          <label key={item.id}>
             <input
               type="checkbox"
               onChange={() => handleCheckboxChange(item.id, item)}
