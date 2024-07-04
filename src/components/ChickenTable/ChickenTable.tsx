@@ -2,20 +2,21 @@ import React, { useEffect, useState } from "react";
 import { ChickenData } from "../../types/ChickenData";
 import "./ChickenTable.css";
 
-const ChickenTable: React.FC = () => {
-    
-    const [data, setData] = React.useState<ChickenData[]>([]);
-    const [selected, setSelected] = React.useState<ChickenData[]>([]);
+interface ChickenTableProps {
+    data: ChickenData[];
+}
+
+const ChickenTable: React.FC<ChickenTableProps> = ({ data }) => {
+    const [selected, setSelected] = useState<ChickenData[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 15;
     const pageNumbersPerPage = 10;
+    const [filteredData, setFilteredData] = useState<ChickenData[]>([]);
 
-    // 데이터 가져오기
-    useEffect(() => {
-        fetch("../../../public/data.json")
-            .then((response) => response.json())
-            .then((data) => setData(data));
-    }, []);
+     // 초기 데이터 설정
+     useEffect(() => {
+        setFilteredData(data);
+    }, [data]);
 
     const handleCheckboxChange = (item: ChickenData) => {
         setSelected((prev) => {
@@ -30,13 +31,13 @@ const ChickenTable: React.FC = () => {
     // 테이블 페이징
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+    const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
 
     const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
-    const totalPageNumbers = Math.ceil(data.length / itemsPerPage);
+    const totalPageNumbers = Math.ceil(filteredData.length / itemsPerPage);
     const pageNumbers = [];
-    for (let i = 1; i <= Math.ceil(data.length / itemsPerPage); i++) {
+    for (let i = 1; i <= Math.ceil(filteredData.length / itemsPerPage); i++) {
         pageNumbers.push(i);
     }
 
