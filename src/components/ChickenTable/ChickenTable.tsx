@@ -11,7 +11,17 @@ const ChickenTable: React.FC = () => {
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
     const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+    const pageNumbersPerPage = 10;
+    const totalPageNumbers = Math.ceil(data.length / itemsPerPage);
     const pageNumbers = [];
+    const startPage =
+        Math.floor((currentPage - 1) / pageNumbersPerPage) *
+            pageNumbersPerPage +
+        1;
+    const endPage = Math.min(
+        startPage + pageNumbersPerPage - 1,
+        totalPageNumbers
+    );
     for (let i = 1; i <= Math.ceil(data.length / itemsPerPage); i++) {
         pageNumbers.push(i);
     }
@@ -65,7 +75,12 @@ const ChickenTable: React.FC = () => {
                 </tbody>
             </table>
             <div className="pagination">
-                {pageNumbers.map((number) => (
+                {startPage > 1 && (
+                    <button onClick={() => paginate(startPage - 1)}>
+                        &laquo;
+                    </button>
+                )}
+                {pageNumbers.slice(startPage - 1, endPage).map((number) => (
                     <button
                         key={number}
                         onClick={() => paginate(number)}
@@ -74,6 +89,11 @@ const ChickenTable: React.FC = () => {
                         {number}
                     </button>
                 ))}
+                {endPage < totalPageNumbers && (
+                    <button onClick={() => paginate(endPage + 1)}>
+                        &raquo;
+                    </button>
+                )}
             </div>
         </div>
     );
