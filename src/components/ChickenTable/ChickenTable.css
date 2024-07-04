@@ -34,3 +34,8 @@
 .pagination button:hover {
     background-color: #ddd;
 }
+
+.pagination button.active {
+    background-color: #29baa0;
+    color: white;
+}

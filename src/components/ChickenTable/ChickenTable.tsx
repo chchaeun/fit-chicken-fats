@@ -69,6 +69,7 @@ const ChickenTable: React.FC = () => {
                     <button
                         key={number}
                         onClick={() => paginate(number)}
+                        className={currentPage === number ? "active" : ""}
                     >
                         {number}
                     </button>
