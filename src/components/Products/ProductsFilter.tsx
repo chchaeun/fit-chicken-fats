@@ -1,21 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { brandCheckbox, brandFilter, container, filterSection, productContainer, productDetail } from './ProductsFilter.css';
-
-interface Product {
-  manufacturer: string;
-  product_name: string;
-  calories: string;
-  protein: string;
-  fat: string;
-  calbohydrate: string;
-  sugars: string;
-  sodium: string;
-  cholesterol: string;
-  saturated_fat: string;
-  weight: string;
-  brand: string;
-  id: number;
-}
+import { Product } from '../../types';
 
 const ProductsFilter: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
