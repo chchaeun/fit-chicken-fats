@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { brandCheckbox, brandFilter, filterSection} from './ProductsFilter.css';
+import { brandCheckbox, brandFilter, container } from './ProductsFilter.css';
 import { Product } from '../../types';
 
 interface ProductsFilterProps {
@@ -47,7 +47,7 @@ const ProductsFilter: React.FC<ProductsFilterProps> = ({onFilter}) => {
 
 
   return (
-    <div className={filterSection}>
+    <div className={container}>
       <h2>브랜드별 필터</h2>
       <div className={brandFilter}>
         {brands.map((brand) => (
