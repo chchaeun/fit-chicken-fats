@@ -3,29 +3,14 @@ import { ChickenData } from "../../types/ChickenData";
 import "./ChickenTable.css";
 
 const ChickenTable: React.FC = () => {
+    
     const [data, setData] = React.useState<ChickenData[]>([]);
     const [selected, setSelected] = React.useState<ChickenData[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 15;
-    const indexOfLastItem = currentPage * itemsPerPage;
-    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
-    const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
     const pageNumbersPerPage = 10;
-    const totalPageNumbers = Math.ceil(data.length / itemsPerPage);
-    const pageNumbers = [];
-    const startPage =
-        Math.floor((currentPage - 1) / pageNumbersPerPage) *
-            pageNumbersPerPage +
-        1;
-    const endPage = Math.min(
-        startPage + pageNumbersPerPage - 1,
-        totalPageNumbers
-    );
-    for (let i = 1; i <= Math.ceil(data.length / itemsPerPage); i++) {
-        pageNumbers.push(i);
-    }
 
+    // 데이터 가져오기
     useEffect(() => {
         fetch("../../../public/data.json")
             .then((response) => response.json())
@@ -41,6 +26,30 @@ const ChickenTable: React.FC = () => {
             }
         });
     };
+
+    // 테이블 페이징
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+
+    const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+
+    const totalPageNumbers = Math.ceil(data.length / itemsPerPage);
+    const pageNumbers = [];
+    for (let i = 1; i <= Math.ceil(data.length / itemsPerPage); i++) {
+        pageNumbers.push(i);
+    }
+
+    // 페이지 버튼 10개씩만 나타내기
+    const startPage =
+        Math.floor((currentPage - 1) / pageNumbersPerPage) *
+            pageNumbersPerPage +
+        1;
+    const endPage = Math.min(
+        startPage + pageNumbersPerPage - 1,
+        totalPageNumbers
+    );
+
 
     return (
         <div className="table-container">
