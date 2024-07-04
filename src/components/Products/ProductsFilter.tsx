@@ -20,15 +20,6 @@ const ProductsFilter: React.FC = () => {
     fetchData();
   }, []);
 
-  // 제품을 브랜드별로 그룹화
-  const productsByBrand = products.reduce((acc: { [key: string]: Product[] }, product) => {
-    if (!acc[product.brand]) {
-      acc[product.brand] = [];
-    }
-    acc[product.brand].push(product);
-    return acc;
-  }, {});
-
   // 체크박스 변경 핸들링
   const handleCheckboxChange = (brand: string) => {
     setSelectedBrands((prevSelectedBrands) =>
@@ -43,8 +34,9 @@ const ProductsFilter: React.FC = () => {
     ? products.filter((product) => selectedBrands.includes(product.brand))
     : products;
 
-  // 고유한 브랜드 가져오기
-  const brands = Object.keys(productsByBrand);
+  // 제품 브랜드 가져오기
+  const brands = Array.from(new Set(products.map((product) => product.brand)));
+
 
   return (
     <div className={container}>
