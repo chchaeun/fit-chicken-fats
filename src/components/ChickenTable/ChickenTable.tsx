@@ -4,8 +4,8 @@ import "./ChickenTable.css";
 
 const ChickenTable: React.FC = () => {
     
-    const [data, setData] = React.useState<ChickenData[]>([]);
-    const [selected, setSelected] = React.useState<ChickenData[]>([]);
+    const [data, setData] = useState<ChickenData[]>([]);
+    const [selected, setSelected] = useState<ChickenData[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 15;
     const pageNumbersPerPage = 10;
