@@ -1,21 +1,29 @@
 import { FiX } from "react-icons/fi";
 import {
-  closeButton, header, tableBody, tableHeader,
-  tableRow, tableWrapper, title, wrapper,
-} from "./Sidebar.css";
+  closeButton,
+  header,
+  tableBody,
+  tableHeader,
+  tableRow,
+  tableWrapper,
+  title,
+  wrapper,
+} from "./DetailSideTable.css";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../store";
 
-const Sidebar = () => {
+const DetailSideTable = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const detailOnSelectedItems = useSelector((state: RootState) => state.details);
+  const detailOnSelectedItems = useSelector(
+    (state: RootState) => state.details
+  );
 
   const handleOnCloseButton = () => {
     dispatch();
   };
 
-  if(!detailOnSelectedItems.selectedData[0]){
-    return <></>
+  if (!detailOnSelectedItems.selectedData[0]) {
+    return <></>;
   }
 
   return (
@@ -66,4 +74,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default DetailSideTable;
