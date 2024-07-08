@@ -1,4 +1,4 @@
-export interface IChickenData {
+export interface ChickenData {
   id: number;
   manufacturer: string;
   product_name: string;

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { brandCheckbox, brandFilter, container } from './ProductsFilter.css';
-import { IChickenData } from '../../types/ChickenData';
+import { ChickenData } from '../../types/ChickenData';
 
 interface ProductsFilterProps {
-  onFilter: (filteredData: IChickenData[]) => void;
+  onFilter: (filteredData: ChickenData[]) => void;
 }
 
 const ProductsFilter: React.FC<ProductsFilterProps> = ({onFilter}) => {
-  const [products, setProducts] = useState<IChickenData[]>([]);
+  const [products, setProducts] = useState<ChickenData[]>([]);
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
 
   // 데이터 가져오기

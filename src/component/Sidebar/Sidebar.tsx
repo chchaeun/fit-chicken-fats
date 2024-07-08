@@ -9,11 +9,11 @@ import {
   title,
   wrapper,
 } from "./Sidebar.css";
-import { IChickenData } from "../../types/ChickenData";
+import { ChickenData } from "../../types/ChickenData";
 import { FC } from "react";
 
 type TSidebarProps = {
-  selectedItems: IChickenData[];
+  selectedItems: ChickenData[];
 }
 
 const Sidebar: FC<TSidebarProps> = ({ selectedItems }) => {

@@ -1,7 +1,7 @@
-import { IChickenData } from './ChickenData';
+import { ChickenData } from './ChickenData';
 
 export interface ChickenState {
-  data: IChickenData[];
-  selected: IChickenData[];
+  data: ChickenData[];
+  selected: ChickenData[];
   currentPage: number;
 }

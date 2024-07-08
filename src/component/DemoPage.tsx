@@ -5,12 +5,12 @@
 
 import { useEffect, useState } from "react";
 import Sidebar from "./Sidebar/Sidebar";
-import { IChickenData } from "../types/ChickenData";
+import { ChickenData } from "../types/ChickenData";
 
 const DemoPage = () => {
-  const [selectedItems, setSelectedItems] = useState<IChickenData[]>([]);
+  const [selectedItems, setSelectedItems] = useState<ChickenData[]>([]);
 
-  const handleCheckboxChange = (id: number, item: IChickenData) => {
+  const handleCheckboxChange = (id: number, item: ChickenData) => {
     const foundItem = selectedItems.find((i) => i.id === id);
 
     if (foundItem) {
@@ -20,7 +20,7 @@ const DemoPage = () => {
     }
   };
 
-  const [data, setData] = useState<IChickenData[]>([]);
+  const [data, setData] = useState<ChickenData[]>([]);
   useEffect(() => {
     fetch("/data.json")
       .then((res) => res.json())
