@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store";
 import { setCurrentPage, setData, toggleSelect } from "../../store/slices/chickenSlice";
-import { ChickenData } from "../../types/ChickenData";
+import { IChickenData } from "../../types/ChickenData";
 import "./ChickenTable.css";
 
 const ChickenTable: React.FC = () => {
@@ -21,7 +21,7 @@ const ChickenTable: React.FC = () => {
             .then((data) => dispatch(setData(data)));
     }, [dispatch]);
 
-    const handleCheckboxChange = (item: ChickenData) => {
+    const handleCheckboxChange = (item: IChickenData) => {
         dispatch(toggleSelect(item));
       };
 
