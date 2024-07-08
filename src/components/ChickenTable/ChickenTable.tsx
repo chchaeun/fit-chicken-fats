@@ -16,7 +16,7 @@ const ChickenTable: React.FC<ChickenTableProps> = ({ filteredData }) => {
 
     // 데이터 가져오기
     useEffect(() => {
-        fetch("../../../public/data.json")
+        fetch("../../../public/data/products.json")
             .then((response) => response.json())
             .then((data) => setData(data));
     }, []);
@@ -111,5 +111,3 @@ const ChickenTable: React.FC<ChickenTableProps> = ({ filteredData }) => {
         </div>
     );
 };
-
-export default ChickenTable;
