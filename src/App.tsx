@@ -5,14 +5,16 @@ import ChickenTable from './components/ChickenTable/ChickenTable';
 import ProductsFilter from './components/Products/ProductsFilter';
 import { ChickenData } from './types/ChickenData';
 import DemoPage from "./components/DemoPage";
-import Sidebar from "./components/Sidebar/Sidebar";
 import './App.css';
+import DetailSideTable from "./components/Details/DetailSideTable";
 
 function App() {
   return (
     <div>
       <DemoPage />
-      <Sidebar />
+      <ProductsFilter onFilter={setFilteredData} />
+      <ChickenTable filteredData={filteredData} />
+      <DetailSideTable />
     </div>
   );
 }
