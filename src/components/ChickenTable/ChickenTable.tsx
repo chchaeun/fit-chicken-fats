@@ -5,12 +5,15 @@ import { setCurrentPage, setData, toggleSelect } from "../../store/slices/chicke
 import { IChickenData } from "../../types/ChickenData";
 import "./ChickenTable.css";
 
-const ChickenTable: React.FC = () => {
+interface ChickenTableProps {
+    filteredData: IChickenData[];
+}
+
+const ChickenTable: React.FC<ChickenTableProps> = ({ filteredData }) => {
     const dispatch = useDispatch();
     const data = useSelector((state: RootState) => state.chicken.data);
     const selected = useSelector((state: RootState) => state.chicken.selected);
     const currentPage = useSelector((state: RootState) => state.chicken.currentPage);
-
     const itemsPerPage = 15;
     const pageNumbersPerPage = 10;
 
@@ -28,13 +31,13 @@ const ChickenTable: React.FC = () => {
     // 테이블 페이징
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+    const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
 
     const paginate = (pageNumber: number) => {
         dispatch(setCurrentPage(pageNumber));
     }
 
-    const totalPageNumbers = Math.ceil(data.length / itemsPerPage);
+    const totalPageNumbers = Math.ceil(filteredData.length / itemsPerPage);
     const pageNumbers = [];
     for (let i = 1; i <= Math.ceil(data.length / itemsPerPage); i++) {
         pageNumbers.push(i);
@@ -71,8 +74,8 @@ const ChickenTable: React.FC = () => {
                                     type="checkbox"
                                     checked={
                                         !!selected.find((i) => i.id === item.id)
-                                    }
-                                    onChange={() => handleCheckboxChange(item)}
+                                    }onChange={() => handleCheckboxChange(item)}
+                                    
                                 />
                             </td>
                             <td>{item.brand}</td>
