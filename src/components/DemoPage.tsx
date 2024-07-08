@@ -12,7 +12,7 @@ import { AppDispatch, RootState } from "../store";
 const DemoPage = () => {
   const dispatch = useDispatch<AppDispatch>();
   const detailOnSelectedItems = useSelector(
-    (state: RootState) => state.details
+    (state: RootState) => state.detail
   );
 
   const handleOnCheckboxChange = (item: ChickenData) => {
