@@ -1,12 +1,15 @@
-import './App.css'
-import ChickenTable from './components/ChickenTable/ChickenTable'
-function App() {
+import "./App.css";
+import ChickenTable from "./components/ChickenTable/ChickenTable";
+import DemoPage from "./component/DemoPage";
 
-  return (
-    <div>
-      <ChickenTable />
-    </div>
-  )
+function App() {
+    return (
+        <div>
+            <ChickenTable />
+
+            <DemoPage />
+        </div>
+    );
 }
 
-export default App
+export default App;

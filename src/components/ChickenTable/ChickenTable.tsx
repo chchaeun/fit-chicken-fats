@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { ChickenData } from "../../types/ChickenData";
+import { IChickenData } from "../../types/ChickenData";
 import "./ChickenTable.css";
 
 const ChickenTable: React.FC = () => {
     
-    const [data, setData] = useState<ChickenData[]>([]);
-    const [selected, setSelected] = useState<ChickenData[]>([]);
+    const [data, setData] = useState<IChickenData[]>([]);
+    const [selected, setSelected] = useState<IChickenData[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 15;
     const pageNumbersPerPage = 10;
@@ -17,7 +17,7 @@ const ChickenTable: React.FC = () => {
             .then((data) => setData(data));
     }, []);
 
-    const handleCheckboxChange = (item: ChickenData) => {
+    const handleCheckboxChange = (item: IChickenData) => {
         setSelected((prev) => {
             if (prev.find((i) => i.id === item.id)) {
                 return prev.filter((i) => i.id !== item.id);
