@@ -12,8 +12,8 @@ const App: React.FC = () => {
   return (
     <div>
       <DemoPage />
-      <ProductsFilter onFilter={setFilteredData} />
-      <ChickenTable filteredData={filteredData} />
+      {/* <ProductsFilter onFilter={setFilteredData} />
+      <ChickenTable filteredData={filteredData} /> */}
       <DetailSideTable />
     </div>
   );
