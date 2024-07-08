@@ -1,17 +1,29 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../store";
-import { setFilteredResults, setSelectedBrands } from "../../store/slices/chickenSlice";
-import { brandCheckbox, brandFilter, container } from "./ProductsFilter.css";
-import { ChickenData } from "../../types/ChickenData";
+import React, { useEffect, useState } from 'react';
+import { brandCheckbox, brandFilter, container } from './ProductsFilter.css';
+import { ChickenData } from '../../types/ChickenData';
 
-const ProductsFilter: React.FC = () => {
-  const dispatch = useDispatch();
-  const products = useSelector((state: RootState) => state.chicken.data);
-  const selectedBrands = useSelector((state: RootState) => state.chicken.selectedBrands);
-  const searchResults = useSelector(
-    (state: RootState) => state.chicken.searchResults
-  );
+interface ProductsFilterProps {
+  onFilter: (filteredData: ChickenData[]) => void;
+}
+
+const ProductsFilter: React.FC<ProductsFilterProps> = ({onFilter}) => {
+  const [products, setProducts] = useState<ChickenData[]>([]);
+  const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
+
+  // 데이터 가져오기
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('/data/products.json');
+        const data = await response.json();
+        setProducts(data);
+      } catch (error) {
+        console.error('Error fetching the data', error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   // 브랜드별 필터링
   useEffect(() => {

@@ -4,7 +4,10 @@ import { RootState } from "../../store";
 import { setCurrentPage, setData, toggleSelect } from "../../store/slices/chickenSlice";
 import { ChickenData } from "../../types/ChickenData";
 import "./ChickenTable.css";
-import { setComparisonData } from "../../store/slices/comparisonSlice";
+
+interface ChickenTableProps {
+    filteredData: ChickenData[];
+}
 
 const ChickenTable: React.FC = () => {
     const dispatch = useDispatch();
@@ -23,13 +26,7 @@ const ChickenTable: React.FC = () => {
     }, [dispatch]);
 
     const handleCheckboxChange = (item: ChickenData) => {
-        setSelected((prev) => {
-            if (prev.find((i) => i.id === item.id)) {
-                return prev.filter((i) => i.id !== item.id);
-            } else {
-                return [...prev, item];
-            }
-        });
+        dispatch(toggleSelect(item));
     };
 
     // 테이블 페이징
