@@ -4,25 +4,20 @@
 */
 
 import { useEffect, useState } from "react";
-import Sidebar from "./Sidebar/Sidebar";
 import { ChickenData } from "../types/ChickenData";
+import { setDetailData } from "../store/slices/detailSlice";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../store";
 
 const DemoPage = () => {
-  const [selectedItems, setSelectedItems] = useState<ChickenData[]>([]);
-
-  const handleCheckboxChange = (id: number, item: ChickenData) => {
-    const foundItem = selectedItems.find((i) => i.id === id);
-
-    if (foundItem) {
-      setSelectedItems(selectedItems.filter((i) => i.id !== id));
-    } else {
-      setSelectedItems([...selectedItems, item]);
-    }
+  const dispatch = useDispatch<AppDispatch>();
+  const handleOnCheckboxChange = (item: ChickenData) => {
+    dispatch(setDetailData(item))
   };
 
   const [data, setData] = useState<ChickenData[]>([]);
   useEffect(() => {
-    fetch("/data.json")
+    fetch("../../../public/data/products.json")
       .then((res) => res.json())
       .then((data) => setData(data))
       .catch((error) => console.error(error));
@@ -31,23 +26,16 @@ const DemoPage = () => {
   return (
     <div>
       <div>
-        {/* 체크박스 */}
         {data.map((item) => (
           <label key={item.id}>
             <input
-              type="checkbox"
-              onChange={() => handleCheckboxChange(item.id, item)}
+              type="checkbox" 
+              onChange={() => handleOnCheckboxChange(item)}      
             />
             {item.id}
           </label>
         ))}
       </div>
-      {
-        /* 선택된 아이템이 하나 이상이어야 사이드바 열림. */
-        selectedItems.length > 0 ? (
-          <Sidebar selectedItems={selectedItems} />
-        ) : null
-      }
     </div>
   );
 };
