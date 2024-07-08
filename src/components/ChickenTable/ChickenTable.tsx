@@ -2,27 +2,28 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../store";
 import { setCurrentPage, setData } from "../../store/slices/chickenSlice";
-import { RootState } from "../../store";
-import { setCurrentPage, setData, toggleSelect } from "../../store/slices/chickenSlice";
 import { ChickenData } from "../../types/ChickenData";
 import "./ChickenTable.css";
-import { setComparisonData } from "../../store/slices/comparisonSlice";
+import { setDetailData } from "../../store/slices/detailSlice";
 
-const ChickenTable: React.FC = () => {
-    const dispatch = useDispatch();
+interface ChickenTableProps {
+    filteredData: ChickenData[];
+}
+
+const ChickenTable: React.FC<ChickenTableProps> = ({ filteredData }) => {
+    const dispatch = useDispatch<AppDispatch>();
     const data = useSelector((state: RootState) => state.chicken.data);
-    const selected = useSelector((state: RootState) => state.chicken.selected);
     const currentPage = useSelector((state: RootState) => state.chicken.currentPage);
 
     const itemsPerPage = 15;
     const pageNumbersPerPage = 10;
 
     // 체크박스 선택
-    const comparisonOnSelectedItems = useSelector(
-        (state: RootState) => state.comparison
+    const detailOnSelectedItems = useSelector(
+      (state: RootState) => state.detail
     );
     const handleOnCheckboxChange = (item: ChickenData) => {
-        dispatch(setComparisonData(item));
+      dispatch(setDetailData(item));
     };    
 
     // 데이터 가져오기
@@ -31,11 +32,6 @@ const ChickenTable: React.FC = () => {
             .then((response) => response.json())
             .then((data) => dispatch(setData(data)));
     }, [dispatch]);
-
-    const handleCheckboxChange = (item: ChickenData) => {
-    const handleCheckboxChange = (item: ChickenData) => {
-        dispatch(toggleSelect(item));
-      };
 
     // 테이블 페이징
     const indexOfLastItem = currentPage * itemsPerPage;
@@ -82,7 +78,7 @@ const ChickenTable: React.FC = () => {
                   <input
                     type="checkbox"
                     checked={
-                      !!comparisonOnSelectedItems.comparisonData.find(
+                      !!detailOnSelectedItems.selectedData.find(
                         (i) => i.id === item.id
                       )
                     }
