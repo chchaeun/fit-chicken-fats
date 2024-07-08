@@ -1,60 +1,51 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../store";
-import {
-  setCurrentPage,
-  setData,
-} from "../../store/slices/chickenSlice";
+import { RootState } from "../../store";
+import { setCurrentPage, setData, toggleSelect } from "../../store/slices/chickenSlice";
 import { ChickenData } from "../../types/ChickenData";
 import "./ChickenTable.css";
 import { setComparisonData } from "../../store/slices/comparisonSlice";
 
 const ChickenTable: React.FC = () => {
-  const dispatch = useDispatch<AppDispatch>();
-  const data = useSelector((state: RootState) => state.chicken.data);
-  const filteredResults = useSelector(
-    (state: RootState) => state.chicken.filteredResults
-  );
-  const currentPage = useSelector(
-    (state: RootState) => state.chicken.currentPage
-  );
-  const itemsPerPage = 15;
-  const pageNumbersPerPage = 10;
+    const dispatch = useDispatch();
+    const data = useSelector((state: RootState) => state.chicken.data);
+    const selected = useSelector((state: RootState) => state.chicken.selected);
+    const currentPage = useSelector((state: RootState) => state.chicken.currentPage);
 
-  // 체크박스 선택
-  const comparisonOnSelectedItems = useSelector(
-    (state: RootState) => state.comparison
-  );
-  const handleOnCheckboxChange = (item: ChickenData) => {
-    dispatch(setComparisonData(item));
-  };
+    const itemsPerPage = 15;
+    const pageNumbersPerPage = 10;
 
-  // 데이터 가져오기
-  useEffect(() => {
-    fetch("../../../public/data/products.json")
-      .then((response) => response.json())
-      .then((data) => dispatch(setData(data)));
-  }, [dispatch]);
+    // 데이터 가져오기
+    useEffect(() => {
+        fetch("../../../public/data/products.json")
+            .then((response) => response.json())
+            .then((data) => dispatch(setData(data)));
+    }, [dispatch]);
 
-  // filteredData 변경시 페이지 리셋
-  useEffect(() => {
-    dispatch(setCurrentPage(1));
-  }, [filteredResults, dispatch]);
+    const handleCheckboxChange = (item: ChickenData) => {
+        setSelected((prev) => {
+            if (prev.find((i) => i.id === item.id)) {
+                return prev.filter((i) => i.id !== item.id);
+            } else {
+                return [...prev, item];
+            }
+        });
+    };
 
-  // 테이블 페이징
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = filteredResults.slice(indexOfFirstItem, indexOfLastItem);
+    // 테이블 페이징
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
 
-  const paginate = (pageNumber: number) => {
-    dispatch(setCurrentPage(pageNumber));
-  };
+    const paginate = (pageNumber: number) => {
+        dispatch(setCurrentPage(pageNumber));
+    }
 
-  const totalPageNumbers = Math.ceil(filteredResults.length / itemsPerPage);
-  const pageNumbers = [];
-  for (let i = 1; i <= Math.ceil(data.length / itemsPerPage); i++) {
-    pageNumbers.push(i);
-  }
+    const totalPageNumbers = Math.ceil(data.length / itemsPerPage);
+    const pageNumbers = [];
+    for (let i = 1; i <= Math.ceil(data.length / itemsPerPage); i++) {
+        pageNumbers.push(i);
+    }
 
   // 페이지 버튼 10개씩만 나타내기
   const startPage =
