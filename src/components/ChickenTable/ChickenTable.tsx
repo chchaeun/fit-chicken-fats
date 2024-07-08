@@ -1,11 +1,17 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+<<<<<<< HEAD
 import { AppDispatch, RootState } from "../../store";
 import { setCurrentPage, setData } from "../../store/slices/chickenSlice";
+=======
+import { RootState } from "../../store";
+import { setCurrentPage, setData, toggleSelect } from "../../store/slices/chickenSlice";
+>>>>>>> 9c2f3b1 (feat: Redux를 사용한 상태 관리 통합 #15)
 import { ChickenData } from "../../types/ChickenData";
 import "./ChickenTable.css";
 import { setComparisonData } from "../../store/slices/comparisonSlice";
 
+<<<<<<< HEAD
 interface ChickenTableProps {
     filteredData: ChickenData[];
 }
@@ -14,6 +20,14 @@ const ChickenTable: React.FC<ChickenTableProps> = ({ filteredData }) => {
     const dispatch = useDispatch<AppDispatch>();
     const data = useSelector((state: RootState) => state.chicken.data);
     const currentPage = useSelector((state: RootState) => state.chicken.currentPage);
+=======
+const ChickenTable: React.FC = () => {
+    const dispatch = useDispatch();
+    const data = useSelector((state: RootState) => state.chicken.data);
+    const selected = useSelector((state: RootState) => state.chicken.selected);
+    const currentPage = useSelector((state: RootState) => state.chicken.currentPage);
+
+>>>>>>> 9c2f3b1 (feat: Redux를 사용한 상태 관리 통합 #15)
     const itemsPerPage = 15;
     const pageNumbersPerPage = 10;
 
@@ -31,6 +45,13 @@ const ChickenTable: React.FC<ChickenTableProps> = ({ filteredData }) => {
             .then((response) => response.json())
             .then((data) => dispatch(setData(data)));
     }, [dispatch]);
+<<<<<<< HEAD
+=======
+
+    const handleCheckboxChange = (item: ChickenData) => {
+        dispatch(toggleSelect(item));
+      };
+>>>>>>> 9c2f3b1 (feat: Redux를 사용한 상태 관리 통합 #15)
 
     // 테이블 페이징
     const indexOfLastItem = currentPage * itemsPerPage;
