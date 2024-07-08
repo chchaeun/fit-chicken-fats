@@ -4,9 +4,12 @@ import { RootState } from "../../store";
 import { setCurrentPage, setData, toggleSelect } from "../../store/slices/chickenSlice";
 import { ChickenData } from "../../types/ChickenData";
 import "./ChickenTable.css";
-import { setComparisonData } from "../../store/slices/comparisonSlice";
 
-const ChickenTable: React.FC = () => {
+interface ChickenTableProps {
+    filteredData: ChickenData[];
+}
+
+const ChickenTable: React.FC<ChickenTableProps> = ({ filteredData }) => {
     const dispatch = useDispatch();
     const data = useSelector((state: RootState) => state.chicken.data);
     const selected = useSelector((state: RootState) => state.chicken.selected);
