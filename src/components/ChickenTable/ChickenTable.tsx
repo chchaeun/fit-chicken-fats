@@ -4,10 +4,9 @@ import { RootState } from "../../store";
 import { setCurrentPage, setData, toggleSelect } from "../../store/slices/chickenSlice";
 import { ChickenData } from "../../types/ChickenData";
 import "./ChickenTable.css";
-import { Product } from "../../types";
 
 interface ChickenTableProps {
-    filteredData: Product[];
+    filteredData: ChickenData[];
 }
 
 const ChickenTable: React.FC<ChickenTableProps> = ({ filteredData }) => {
