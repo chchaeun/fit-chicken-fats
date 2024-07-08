@@ -6,13 +6,17 @@
 import { useEffect, useState } from "react";
 import { ChickenData } from "../types/ChickenData";
 import { setDetailData } from "../store/slices/detailSlice";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "../store";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../store";
 
 const DemoPage = () => {
   const dispatch = useDispatch<AppDispatch>();
+  const detailOnSelectedItems = useSelector(
+    (state: RootState) => state.details
+  );
+
   const handleOnCheckboxChange = (item: ChickenData) => {
-    dispatch(setDetailData(item))
+    dispatch(setDetailData(item));
   };
 
   const [data, setData] = useState<ChickenData[]>([]);
@@ -29,8 +33,11 @@ const DemoPage = () => {
         {data.map((item) => (
           <label key={item.id}>
             <input
-              type="checkbox" 
-              onChange={() => handleOnCheckboxChange(item)}      
+              type="checkbox"
+              checked={!!detailOnSelectedItems.selectedData.find(
+                (i) => i.id === item.id
+              )}
+              onChange={() => handleOnCheckboxChange(item)}
             />
             {item.id}
           </label>
