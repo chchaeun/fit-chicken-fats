@@ -111,3 +111,5 @@ const ChickenTable: React.FC<ChickenTableProps> = ({ filteredData }) => {
         </div>
     );
 };
+
+export default ChickenTable;

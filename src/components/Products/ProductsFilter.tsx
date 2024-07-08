@@ -6,7 +6,7 @@ interface ProductsFilterProps {
   onFilter: (filteredData: Product[]) => void;
 }
 
-const ProductsFilter: React.FC<ProductsFilterProps> = ({onFilter}) => {
+const ProductsFilter: React.FC<ProductsFilterProps> = ({ onFilter }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
 
@@ -14,7 +14,7 @@ const ProductsFilter: React.FC<ProductsFilterProps> = ({onFilter}) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('/data.json');
+        const response = await fetch('/public/data/products.json');
         const data = await response.json();
         setProducts(data);
       } catch (error) {
