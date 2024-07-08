@@ -1,30 +1,28 @@
 import { FiX } from "react-icons/fi";
 import {
-  closeButton,
-  header,
-  tableBody,
-  tableHeader,
-  tableRow,
-  tableWrapper,
-  title,
-  wrapper,
+  closeButton, header, tableBody, tableHeader,
+  tableRow, tableWrapper, title, wrapper,
 } from "./Sidebar.css";
-import { ChickenData } from "../../types/ChickenData";
-import { FC } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../store";
 
-type TSidebarProps = {
-  selectedItems: ChickenData[];
-}
+const Sidebar = () => {
+  const dispatch = useDispatch<AppDispatch>();
+  const detailOnSelectedItems = useSelector((state: RootState) => state.details);
 
-const Sidebar: FC<TSidebarProps> = ({ selectedItems }) => {
+  const handleOnCloseButton = () => {
+    dispatch();
+  };
 
-  const handleOnClose = () => {};
+  if(!detailOnSelectedItems.selectedData[0]){
+    return <></>
+  }
 
   return (
     <div className={wrapper}>
       <div className={header}>
         <div className={title}> 🍗 내가 가장 원하는 닭가슴살 제품은 ? 🍗 </div>
-        <FiX className={closeButton} onClick={handleOnClose} />
+        <FiX className={closeButton} onChange={handleOnCloseButton} />
       </div>
       <table className={tableWrapper}>
         <thead className={tableHeader}>
@@ -45,7 +43,7 @@ const Sidebar: FC<TSidebarProps> = ({ selectedItems }) => {
           </tr>
         </thead>
         <tbody className={tableBody}>
-          {selectedItems.map((item) => (
+          {detailOnSelectedItems.selectedData.map((item) => (
             <tr key={item.id} className={tableRow}>
               <td>{item.id}</td>
               <td>{item.brand ? item.brand : "-"}</td>
