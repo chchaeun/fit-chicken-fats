@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { IChickenData } from "../../types/ChickenData";
 import "./ChickenTable.css";
+import { Product } from "../../types";
 
-const ChickenTable: React.FC = () => {
+interface ChickenTableProps {
+    filteredData: Product[];
+}
+
+const ChickenTable: React.FC<ChickenTableProps> = ({ filteredData }) => {
     
-    const [data, setData] = useState<IChickenData[]>([]);
-    const [selected, setSelected] = useState<IChickenData[]>([]);
+    const [data, setData] = React.useState<Product[]>([]);
+    const [selected, setSelected] = React.useState<Product[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 15;
     const pageNumbersPerPage = 10;
@@ -17,7 +21,7 @@ const ChickenTable: React.FC = () => {
             .then((data) => setData(data));
     }, []);
 
-    const handleCheckboxChange = (item: IChickenData) => {
+    const handleCheckboxChange = (item: Product) => {
         setSelected((prev) => {
             if (prev.find((i) => i.id === item.id)) {
                 return prev.filter((i) => i.id !== item.id);
@@ -30,11 +34,11 @@ const ChickenTable: React.FC = () => {
     // 테이블 페이징
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+    const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
 
     const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
-    const totalPageNumbers = Math.ceil(data.length / itemsPerPage);
+    const totalPageNumbers = Math.ceil(filteredData.length / itemsPerPage);
     const pageNumbers = [];
     for (let i = 1; i <= Math.ceil(data.length / itemsPerPage); i++) {
         pageNumbers.push(i);
@@ -107,5 +111,3 @@ const ChickenTable: React.FC = () => {
         </div>
     );
 };
-
-export default ChickenTable;
