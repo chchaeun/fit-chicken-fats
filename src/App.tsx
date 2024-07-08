@@ -1,17 +1,15 @@
-import React, { useState } from 'react';
-import ChickenTable from './components/ChickenTable/ChickenTable';
-import ProductsFilter from './components/Products/ProductsFilter';
-import { Product } from './types';
+import "./App.css";
+import ChickenTable from "./components/ChickenTable/ChickenTable";
+import DemoPage from "./component/DemoPage";
 
-const App: React.FC = () => {
-  const [filteredData, setFilteredData] = useState<Product[]>([]);
+function App() {
+    return (
+        <div>
+            <ChickenTable />
 
-  return (
-    <div>
-      <ProductsFilter onFilter={setFilteredData} />
-      <ChickenTable filteredData={filteredData} />
-    </div>
-  );
+            <DemoPage />
+        </div>
+    );
 }
 
 export default App;
