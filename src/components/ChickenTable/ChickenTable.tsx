@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../store";
+import { setCurrentPage, setData, toggleSelect } from "../../store/slices/chickenSlice";
 import { ChickenData } from "../../types/ChickenData";
 import "./ChickenTable.css";
 
 const ChickenTable: React.FC = () => {
-    
-    const [data, setData] = useState<ChickenData[]>([]);
-    const [selected, setSelected] = useState<ChickenData[]>([]);
-    const [currentPage, setCurrentPage] = useState(1);
+    const dispatch = useDispatch();
+    const data = useSelector((state: RootState) => state.chicken.data);
+    const selected = useSelector((state: RootState) => state.chicken.selected);
+    const currentPage = useSelector((state: RootState) => state.chicken.currentPage);
+
     const itemsPerPage = 15;
     const pageNumbersPerPage = 10;
 
@@ -14,25 +18,21 @@ const ChickenTable: React.FC = () => {
     useEffect(() => {
         fetch("../../../public/data/products.json")
             .then((response) => response.json())
-            .then((data) => setData(data));
-    }, []);
+            .then((data) => dispatch(setData(data)));
+    }, [dispatch]);
 
     const handleCheckboxChange = (item: ChickenData) => {
-        setSelected((prev) => {
-            if (prev.find((i) => i.id === item.id)) {
-                return prev.filter((i) => i.id !== item.id);
-            } else {
-                return [...prev, item];
-            }
-        });
-    };
+        dispatch(toggleSelect(item));
+      };
 
     // 테이블 페이징
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
 
-    const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+    const paginate = (pageNumber: number) => {
+        dispatch(setCurrentPage(pageNumber));
+    }
 
     const totalPageNumbers = Math.ceil(data.length / itemsPerPage);
     const pageNumbers = [];
