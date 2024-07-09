@@ -1,7 +1,9 @@
-import { detailReducer } from "../slices/detailSlice";
+import { chickenReducer } from "../slices/chickenSlice";
+import { comparisonReducer } from "../slices/comparisonSlice";
 
 const reducer = {
-  details: detailReducer,
+  comparison: comparisonReducer,
+  chicken: chickenReducer,
 };
 
 export default reducer;
