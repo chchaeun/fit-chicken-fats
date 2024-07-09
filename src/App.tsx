@@ -5,6 +5,7 @@ import { ChickenData } from './types/ChickenData';
 import DemoPage from "./components/DemoPage";
 import Sidebar from "./components/Sidebar/Sidebar";
 import './App.css';
+import ComparisonTable from './components/Comparison/ComparisonTable';
 
 const App: React.FC = () => {
   const [filteredData, setFilteredData] = useState<ChickenData[]>([]);
@@ -14,7 +15,7 @@ const App: React.FC = () => {
       <DemoPage />
       <ProductsFilter onFilter={setFilteredData} />
       <ChickenTable filteredData={filteredData} />
-      <Sidebar />
+      <ComparisonTable />
     </div>
   );
 }
