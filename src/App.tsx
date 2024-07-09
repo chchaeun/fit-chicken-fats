@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ChickenTable from './components/ChickenTable/ChickenTable';
 import ProductsFilter from './components/Products/ProductsFilter';
+import SearchBox  from './components/SearchBox/SearchBox';
 import { ChickenData } from './types/ChickenData';
 import DemoPage from './component/DemoPage'
 import './App.css';
@@ -13,6 +14,7 @@ const App: React.FC = () => {
       <DemoPage />
       <ProductsFilter onFilter={setFilteredData} />
       <ChickenTable filteredData={filteredData} />
+      <SearchBox onFilter={setFilteredData} />
     </div>
   );
 }

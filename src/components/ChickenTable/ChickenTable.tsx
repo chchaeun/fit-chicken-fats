@@ -28,6 +28,13 @@ const ChickenTable: React.FC<ChickenTableProps> = ({ filteredData }) => {
         dispatch(toggleSelect(item));
       };
 
+    
+    // filteredData 변경시 페이지 리셋
+    useEffect(() => {
+        dispatch(setCurrentPage(1));
+      }, [filteredData, dispatch]);
+
+    
     // 테이블 페이징
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
