@@ -4,10 +4,10 @@ import { RootState } from "../../store";
 import { setComparisonActive } from "../../store/slices/comparisonSlice";
 
 const ComparisonTable = () => {
-  const dispatch = useDispatch();
-  const { comparisonData, comparisonActive } = useSelector(
-    (state: RootState) => state.comparison
-  );
+    const dispatch = useDispatch();
+    const { comparisonData, comparisonActive, maxValues, minValues } = useSelector(
+        (state: RootState) => state.comparison
+    );
 
   // 사이드바를 닫는 액션 디스패치
   const handleOnCloseButton = () => {
@@ -71,14 +71,14 @@ const ComparisonTable = () => {
                                 {item.brand ? item.brand : "-"}
                             </td>
                             <td className="p-2">{item.product_name}</td>
-                            <td className="p-2">{item.protein}</td>
-                            <td className="p-2">{item.calories}</td>
-                            <td className="p-2"> {item.fat}</td>
-                            <td className="p-2"> {item.calbohydrate}</td>
-                            <td className="p-2"> {item.sugars}</td>
-                            <td className="p-2"> {item.sodium}</td>
-                            <td className="p-2"> {item.cholesterol}</td>
-                            <td className="p-2"> {item.saturated_fat}</td>
+                            <td className="p-2" style={{color: item.protein === maxValues.protein ? 'red' : 'inherit'}}>{item.protein}</td>
+                            <td className="p-2" style={{color: item.calories === minValues.calories ? 'blue' : 'inherit'}}>{item.calories}</td>
+                            <td className="p-2" style={{color: item.fat === minValues.fat ? 'blue' : 'inherit'}}> {item.fat}</td>
+                            <td className="p-2" style={{color: item.calbohydrate === minValues.calbohydrate ? 'blue' : 'inherit'}}> {item.calbohydrate}</td>
+                            <td className="p-2" style={{color: item.sugars === minValues.sugars ? 'blue' : 'inherit'}}> {item.sugars}</td>
+                            <td className="p-2" style={{color: item.sodium === minValues.sodium ? 'blue' : 'inherit'}}> {item.sodium}</td>
+                            <td className="p-2" style={{color: item.cholesterol === minValues.cholesterol ? 'blue' : 'inherit'}}> {item.cholesterol}</td>
+                            <td className="p-2" style={{color: item.saturated_fat === minValues.saturated_fat ? 'blue' : 'inherit'}}> {item.saturated_fat}</td>
                             <td className="p-2"> {item.weight}</td>
                             <td className="p-2">
                                 {item.manufacturer ? item.manufacturer : "-"}
