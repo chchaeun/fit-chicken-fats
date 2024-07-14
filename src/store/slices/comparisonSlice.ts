@@ -44,21 +44,21 @@ const calulateMaxValues = (data: ChickenData[]) => {
 const calculateMinValues = (data: ChickenData[]) => {
     return {
         calories:
-            data.length > 1 ? Math.max(...data.map((i) => i.calories)) : null,
-        fat: data.length > 1 ? Math.max(...data.map((i) => i.fat)) : null,
+            data.length > 1 ? Math.min(...data.map((i) => i.calories)) : null,
+        fat: data.length > 1 ? Math.min(...data.map((i) => i.fat)) : null,
         calbohydrate:
             data.length > 1
-                ? Math.max(...data.map((i) => i.calbohydrate))
+                ? Math.min(...data.map((i) => i.calbohydrate))
                 : null,
-        sugars: data.length > 1 ? Math.max(...data.map((i) => i.sugars)) : null,
-        sodium: data.length > 1 ? Math.max(...data.map((i) => i.sodium)) : null,
+        sugars: data.length > 1 ? Math.min(...data.map((i) => i.sugars)) : null,
+        sodium: data.length > 1 ? Math.min(...data.map((i) => i.sodium)) : null,
         cholesterol:
             data.length > 1
-                ? Math.max(...data.map((i) => i.cholesterol))
+                ? Math.min(...data.map((i) => i.cholesterol))
                 : null,
         saturated_fat:
             data.length > 1
-                ? Math.max(...data.map((i) => i.saturated_fat))
+                ? Math.min(...data.map((i) => i.saturated_fat))
                 : null,
     };
 };
