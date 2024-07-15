@@ -35,31 +35,31 @@ const initialState: ComparisonState = {
     },
 };
 
-const calulateMaxValues = (data: ChickenData[]) => {
+const calculateMaxValues = (data: ChickenData[]) => {
+    const mathMax = (data: ChickenData[], property: keyof ChickenData) => {
+        return data.length > 1
+            ? Math.max(...data.map((i) => i[property]))
+            : null;
+    };
     return {
-        protein:
-            data.length > 1 ? Math.max(...data.map((i) => i.protein)) : null,
+        protein: mathMax(data, "protein"),
     };
 };
 const calculateMinValues = (data: ChickenData[]) => {
+    const mathMin = (data: ChickenData[], property: keyof ChickenData) => {
+        return data.length > 1
+            ? Math.min(...data.map((i) => i[property]))
+            : null;
+    };
+
     return {
-        calories:
-            data.length > 1 ? Math.min(...data.map((i) => i.calories)) : null,
-        fat: data.length > 1 ? Math.min(...data.map((i) => i.fat)) : null,
-        calbohydrate:
-            data.length > 1
-                ? Math.min(...data.map((i) => i.calbohydrate))
-                : null,
-        sugars: data.length > 1 ? Math.min(...data.map((i) => i.sugars)) : null,
-        sodium: data.length > 1 ? Math.min(...data.map((i) => i.sodium)) : null,
-        cholesterol:
-            data.length > 1
-                ? Math.min(...data.map((i) => i.cholesterol))
-                : null,
-        saturated_fat:
-            data.length > 1
-                ? Math.min(...data.map((i) => i.saturated_fat))
-                : null,
+        calories: mathMin(data, "calories"),
+        fat: mathMin(data, "fat"),
+        calbohydrate: mathMin(data, "calbohydrate"),
+        sugars: mathMin(data, "sugars"),
+        sodium: mathMin(data, "sodium"),
+        cholesterol: mathMin(data, "cholesterol"),
+        saturated_fat: mathMin(data, "saturated_fat"),
     };
 };
 
@@ -84,7 +84,7 @@ const comparisonSlice = createSlice({
                 state.comparisonData.push(payload);
             }
 
-            state.maxValues = calulateMaxValues(state.comparisonData);
+            state.maxValues = calculateMaxValues(state.comparisonData);
             state.minValues = calculateMinValues(state.comparisonData);
 
             // 사이드바 활성화 여부 업데이트
@@ -96,6 +96,8 @@ const comparisonSlice = createSlice({
         clearComparisonData: (state) => {
             state.comparisonData = [];
             state.comparisonActive = false;
+            state.maxValues = initialState.maxValues;
+            state.minValues = initialState.minValues;
         },
     },
 });
