@@ -1,42 +1,45 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../store";
+import { setCurrentPage, setData } from "../../store/slices/chickenSlice";
+import { ChickenData } from "../../types/ChickenData";
 import "./ChickenTable.css";
-import { Product } from "../../types";
+import { setComparisonData } from "../../store/slices/comparisonSlice";
 
 interface ChickenTableProps {
-    filteredData: Product[];
+    filteredData: ChickenData[];
 }
 
 const ChickenTable: React.FC<ChickenTableProps> = ({ filteredData }) => {
-    
-    const [data, setData] = React.useState<Product[]>([]);
-    const [selected, setSelected] = React.useState<Product[]>([]);
-    const [currentPage, setCurrentPage] = useState(1);
+    const dispatch = useDispatch<AppDispatch>();
+    const data = useSelector((state: RootState) => state.chicken.data);
+    const currentPage = useSelector((state: RootState) => state.chicken.currentPage);
     const itemsPerPage = 15;
     const pageNumbersPerPage = 10;
+
+    // 체크박스 선택
+    const comparisonOnSelectedItems = useSelector(
+        (state: RootState) => state.comparison
+    );
+    const handleOnCheckboxChange = (item: ChickenData) => {
+        dispatch(setComparisonData(item));
+    };    
 
     // 데이터 가져오기
     useEffect(() => {
         fetch("../../../public/data/products.json")
             .then((response) => response.json())
-            .then((data) => setData(data));
-    }, []);
-
-    const handleCheckboxChange = (item: Product) => {
-        setSelected((prev) => {
-            if (prev.find((i) => i.id === item.id)) {
-                return prev.filter((i) => i.id !== item.id);
-            } else {
-                return [...prev, item];
-            }
-        });
-    };
+            .then((data) => dispatch(setData(data)));
+    }, [dispatch]);
 
     // 테이블 페이징
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
 
-    const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+    const paginate = (pageNumber: number) => {
+        dispatch(setCurrentPage(pageNumber));
+    }
 
     const totalPageNumbers = Math.ceil(filteredData.length / itemsPerPage);
     const pageNumbers = [];
@@ -56,58 +59,58 @@ const ChickenTable: React.FC<ChickenTableProps> = ({ filteredData }) => {
 
 
     return (
-        <div className="table-container">
-            <table className="chicken-table">
-                <thead>
-                    <tr>
-                        <th>선택</th>
-                        <th>브랜드</th>
-                        <th>제품명</th>
-                        <th>단백질(g)</th>
-                        <th>에너지(kcal)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {currentItems.map((item) => (
-                        <tr key={item.id}>
-                            <td>
-                                <input
-                                    type="checkbox"
-                                    checked={
-                                        !!selected.find((i) => i.id === item.id)
-                                    }
-                                    onChange={() => handleCheckboxChange(item)}
-                                />
-                            </td>
-                            <td>{item.brand}</td>
-                            <td>{item.product_name}</td>
-                            <td>{item.protein}</td>
-                            <td>{item.calories}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-            <div className="pagination">
-                {startPage > 1 && (
-                    <button onClick={() => paginate(startPage - 1)}>
-                        &laquo;
-                    </button>
-                )}
-                {pageNumbers.slice(startPage - 1, endPage).map((number) => (
-                    <button
-                        key={number}
-                        onClick={() => paginate(number)}
-                        className={currentPage === number ? "active" : ""}
-                    >
-                        {number}
-                    </button>
-                ))}
-                {endPage < totalPageNumbers && (
-                    <button onClick={() => paginate(endPage + 1)}>
-                        &raquo;
-                    </button>
-                )}
-            </div>
+      <div className="table-container">
+        <table className="chicken-table">
+          <thead>
+            <tr>
+              <th>선택</th>
+              <th>브랜드</th>
+              <th>제품명</th>
+              <th>단백질(g)</th>
+              <th>에너지(kcal)</th>
+            </tr>
+          </thead>
+          <tbody>
+            {currentItems.map((item) => (
+              <tr key={item.id}>
+                <td>
+                  <input
+                    type="checkbox"
+                    checked={
+                      !!comparisonOnSelectedItems.comparisonData.find(
+                        (i) => i.id === item.id
+                      )
+                    }
+                    onChange={() => handleOnCheckboxChange(item)}
+                  />
+                </td>
+                <td>{item.brand}</td>
+                <td>{item.product_name}</td>
+                <td>{item.protein}</td>
+                <td>{item.calories}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <div className="pagination">
+          {startPage > 1 && (
+            <button onClick={() => paginate(startPage - 1)}>&laquo;</button>
+          )}
+          {pageNumbers.slice(startPage - 1, endPage).map((number) => (
+            <button
+              key={number}
+              onClick={() => paginate(number)}
+              className={currentPage === number ? "active" : ""}
+            >
+              {number}
+            </button>
+          ))}
+          {endPage < totalPageNumbers && (
+            <button onClick={() => paginate(endPage + 1)}>&raquo;</button>
+          )}
         </div>
+      </div>
     );
 };
+
+export default ChickenTable;
