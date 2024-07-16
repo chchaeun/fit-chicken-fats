@@ -2,14 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store";
 import { setFilteredResults } from "../../store/slices/chickenSlice";
+import { brandCheckbox, brandFilter, container } from "./ProductsFilter.css";
 import { ChickenData } from "../../types/ChickenData";
-import './ProductsFilter.css'
 
 const ProductsFilter: React.FC = () => {
   const dispatch = useDispatch();
   const products = useSelector((state: RootState) => state.chicken.data);
   const [selectedBrands, setSelectedBrands] = React.useState<string[]>([]);
-  const [showAllBrands, setShowAllBrands] = useState(false);
   const searchResults = useSelector(
     (state: RootState) => state.chicken.searchResults
   );
