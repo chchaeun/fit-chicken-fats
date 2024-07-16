@@ -3,9 +3,11 @@ import { ChickenData } from "../../types/ChickenData";
 import { ChickenState } from "../../types/ChickenState";
 
 const initialState: ChickenState = {
-    data: [],
-    selected: [],
-    currentPage: 1,
+  data: [],
+  selected: [],
+  currentPage: 1,
+  filteredResults: [],
+  searchResults: [],
 };
 
 const chickenSlice = createSlice({
@@ -18,8 +20,15 @@ const chickenSlice = createSlice({
     setCurrentPage(state, action: PayloadAction<number>) {
       state.currentPage = action.payload;
     },
+    setFilteredResults(state, action: PayloadAction<ChickenData[]>) {
+      state.filteredResults = action.payload;
+    },
+    setSearchResults(state, action: PayloadAction<ChickenData[]>) {
+      state.searchResults = action.payload;
+    },
   },
 });
 
-export const { setData, setCurrentPage } = chickenSlice.actions;
+export const { setData, setCurrentPage, setFilteredResults, setSearchResults } =
+  chickenSlice.actions;
 export const chickenReducer = chickenSlice.reducer;
