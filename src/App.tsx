@@ -5,6 +5,7 @@ import { ChickenData } from "./types/ChickenData";
 import "./App.css";
 import ComparisonTable from "./components/Comparison/ComparisonTable";
 import SearchBox from "./components/SearchBox/SearchBox"
+import AverageTable from "./components/AverageTable/AverageTable";
 
 const App: React.FC = () => {
     const [filteredData, setFilteredData] = useState<ChickenData[]>([]);
@@ -12,9 +13,10 @@ const App: React.FC = () => {
     return (
         <div>
             <ProductsFilter onFilter={setFilteredData} />
+            <AverageTable />
             <ChickenTable filteredData={filteredData} />
             <SearchBox onFilter={setFilteredData} />
-            <ComparisonTable />
+            <ComparisonTable /> 
         </div>
     );
 };
