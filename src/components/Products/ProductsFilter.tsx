@@ -1,37 +1,35 @@
-import React, { useEffect, useState } from 'react';
-import { brandCheckbox, brandFilter, container } from './ProductsFilter.css';
-import { ChickenData } from '../../types/ChickenData';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../store";
+import { setFilteredResults } from "../../store/slices/chickenSlice";
+import { brandCheckbox, brandFilter, container } from "./ProductsFilter.css";
+import { ChickenData } from "../../types/ChickenData";
 
-interface ProductsFilterProps {
-  onFilter: (filteredData: ChickenData[]) => void;
-}
-
-const ProductsFilter: React.FC<ProductsFilterProps> = ({onFilter}) => {
-  const [products, setProducts] = useState<ChickenData[]>([]);
-  const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
-
-  // 데이터 가져오기
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('/data/products.json');
-        const data = await response.json();
-        setProducts(data);
-      } catch (error) {
-        console.error('Error fetching the data', error);
-      }
-    };
-
-    fetchData();
-  }, []);
+const ProductsFilter: React.FC = () => {
+  const dispatch = useDispatch();
+  const products = useSelector((state: RootState) => state.chicken.data);
+  const [selectedBrands, setSelectedBrands] = React.useState<string[]>([]);
+  const searchResults = useSelector(
+    (state: RootState) => state.chicken.searchResults
+  );
 
   // 브랜드별 필터링
   useEffect(() => {
-    const filteredData = selectedBrands.length
-      ? products.filter((product) => selectedBrands.includes(product.brand))
+    let filteredData = selectedBrands.length
+      ? products.filter((product: ChickenData) =>
+          selectedBrands.includes(product.brand)
+        )
       : products;
-    onFilter(filteredData);
-  }, [selectedBrands, products, onFilter]);
+
+    // 검색 결과와 필터링 결과 교집합
+    if (searchResults.length > 0) {
+      filteredData = filteredData.filter((product: ChickenData) =>
+        searchResults.some((searchItem) => searchItem.id === product.id)
+      );
+    }
+
+    dispatch(setFilteredResults(filteredData));
+  }, [selectedBrands, products, searchResults, dispatch]);
 
   // 브랜드 별 체크박스 변경 핸들링
   const handleCheckboxChange = (brand: string) => {
@@ -44,7 +42,6 @@ const ProductsFilter: React.FC<ProductsFilterProps> = ({onFilter}) => {
 
   // 제품 브랜드 가져오기
   const brands = Array.from(new Set(products.map((product) => product.brand)));
-
 
   return (
     <div className={container}>
