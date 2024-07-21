@@ -9,7 +9,12 @@ export default {
                 chickenNeutral: "#fed7aa",
                 chickenPositive: "#6cbd7c",
                 chickenNegative: "#fc3838",
+                chickenHover: "#fffec9",
             },
+        },
+        screens: {
+            sm: { max: "1023px" },
+            lg: { min: "1024px" },
         },
     },
     plugins: [],
