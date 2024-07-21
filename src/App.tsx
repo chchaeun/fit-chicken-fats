@@ -10,11 +10,17 @@ const App: React.FC = () => {
   const [filteredData, setFilteredData] = useState<ChickenData[]>([]);
 
     return (
-        <div>
-            <ProductsFilter onFilter={setFilteredData} />
-            <ChickenTable filteredData={filteredData} />
-            <SearchBox onFilter={setFilteredData} />
-            <ComparisonTable />
+        <div className="container p-4 mx-auto">
+            <div className="flex flex-col items-center justify-center p-20 md:flex-row">
+                <div>
+                    <ProductsFilter onFilter={setFilteredData} />
+                    <SearchBox onFilter={setFilteredData} />
+                    <ChickenTable filteredData={filteredData} />
+                </div>
+                <div>
+                    <ComparisonTable />
+                </div>
+            </div>
         </div>
     );
 };
