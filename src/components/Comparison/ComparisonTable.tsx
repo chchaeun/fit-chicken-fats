@@ -25,21 +25,21 @@ const ComparisonTable = () => {
     }
 
     return (
-        <div className="flex flex-col w-5/6 m-auto bg-teal-700">
-            <div className="flex w-full mt-14 justify-center items-center">
-                <div className="font-bold text-3xl m-auto text-white">
-                    🍗 내가 가장 원하는 닭가슴살 제품은 ? 🍗
+        <div className="flex flex-col m-auto rounded-3xl bg-chickenMain">
+            <div className="flex items-center justify-between w-full px-24 py-10 font-bold border-b-2 border-b-chickenPoint">
+                <div className="text-3xl text-chickenPoint">
+                    선택 상품 상세 정보 비교 창
                 </div>
-                <div className="flex font-semibold text-xl opacity-70 mr-10">
+                <div className="flex text-xl opacity-70">
                     <div
-                        className="flex cursor-pointer p-3 items-center m-2 rounded-2xl hover:bg-teal-300"
+                        className="flex items-center p-3 m-2 cursor-pointer rounded-3xl bg-chickenNeutral hover:bg-chickenPositive"
                         onClick={handleOnCloseButton}
                     >
                         <FiMinusSquare />
                         선택 창 숨기기
                     </div>
                     <div
-                        className="flex cursor-pointer p-3 items-center m-2 rounded-2xl hover:bg-rose-400"
+                        className="flex items-center p-3 m-2 cursor-pointer rounded-3xl bg-chickenNeutral hover:bg-chickenNegative"
                         onClick={handleOnClearButton}
                     >
                         <FiXSquare />
@@ -47,43 +47,132 @@ const ComparisonTable = () => {
                     </div>
                 </div>
             </div>
-            <table className="bg-neutral-50 m-12 border-collapse text-center">
-                <thead className="bg-teal-400 text-lg">
+            <table className="m-10 text-center border-collapse bg-neutral-50 whitespace-nowrap">
+                <thead className="text-lg bg-chickenPoint">
                     <tr>
-                        <th className="p-1"> No. </th>
-                        <th className="p-1"> 브랜드 </th>
-                        <th className="p-1"> 제품명 </th>
-                        <th className="p-1"> 단백질(g) </th>
-                        <th className="p-1"> 에너지(kcal) </th>
-                        <th className="p-1"> 지방(g) </th>
-                        <th className="p-1"> 탄수화물(g) </th>
-                        <th className="p-1"> 당류(g) </th>
-                        <th className="p-1"> 나트륨(mg) </th>
-                        <th className="p-1"> 콜레스테롤(mg) </th>
-                        <th className="p-1"> 포화지방산(g) </th>
-                        <th className="p-1"> 중량(g) </th>
-                        <th className="p-1"> 제조사 </th>
+                        <th className="p-4"> No. </th>
+                        <th className="px-12"> 브랜드 </th>
+                        <th className="px-40"> 제품명 </th>
+                        <th className="px-6"> 단백질(g) </th>
+                        <th className="px-4"> 에너지(kcal) </th>
+                        <th className="px-4"> 지방(g) </th>
+                        <th className="px-4"> 탄수화물(g) </th>
+                        <th className="px-4"> 당류(g) </th>
+                        <th className="px-4"> 나트륨(mg) </th>
+                        <th className="px-4"> 콜레스테롤(mg) </th>
+                        <th className="px-4"> 포화지방산(g) </th>
+                        <th className="px-4"> 중량(g) </th>
+                        <th className="px-20"> 제조사 </th>
                     </tr>
                 </thead>
-                <tbody className="text-slate-600">
+                <tbody className="text-sm text-slate-600">
                     {comparisonData.map((item) => (
                         <tr
                             key={item.id}
-                            className="hover:bg-orange-200 hover:text-black "
+                            className="hover:bg-chickenNeutral hover:text-black "
                         >
                             <td className="p-2">{item.id}</td>
                             <td className="p-2">
                                 {item.brand ? item.brand : "-"}
                             </td>
                             <td className="p-2">{item.product_name}</td>
-                            <td className="p-2" style={{color: item.protein === maxValues.protein ? 'red' : 'inherit'}}>{item.protein}</td>
-                            <td className="p-2" style={{color: item.calories === minValues.calories ? 'blue' : 'inherit'}}>{item.calories}</td>
-                            <td className="p-2" style={{color: item.fat === minValues.fat ? 'blue' : 'inherit'}}> {item.fat}</td>
-                            <td className="p-2" style={{color: item.calbohydrate === minValues.calbohydrate ? 'blue' : 'inherit'}}> {item.calbohydrate}</td>
-                            <td className="p-2" style={{color: item.sugars === minValues.sugars ? 'blue' : 'inherit'}}> {item.sugars}</td>
-                            <td className="p-2" style={{color: item.sodium === minValues.sodium ? 'blue' : 'inherit'}}> {item.sodium}</td>
-                            <td className="p-2" style={{color: item.cholesterol === minValues.cholesterol ? 'blue' : 'inherit'}}> {item.cholesterol}</td>
-                            <td className="p-2" style={{color: item.saturated_fat === minValues.saturated_fat ? 'blue' : 'inherit'}}> {item.saturated_fat}</td>
+                            <td
+                                className="p-2"
+                                style={{
+                                    color:
+                                        item.protein === maxValues.protein
+                                            ? "red"
+                                            : "inherit",
+                                }}
+                            >
+                                {item.protein}
+                            </td>
+                            <td
+                                className="p-2"
+                                style={{
+                                    color:
+                                        item.calories === minValues.calories
+                                            ? "blue"
+                                            : "inherit",
+                                }}
+                            >
+                                {item.calories}
+                            </td>
+                            <td
+                                className="p-2"
+                                style={{
+                                    color:
+                                        item.fat === minValues.fat
+                                            ? "blue"
+                                            : "inherit",
+                                }}
+                            >
+                                {" "}
+                                {item.fat}
+                            </td>
+                            <td
+                                className="p-2"
+                                style={{
+                                    color:
+                                        item.calbohydrate ===
+                                        minValues.calbohydrate
+                                            ? "blue"
+                                            : "inherit",
+                                }}
+                            >
+                                {" "}
+                                {item.calbohydrate}
+                            </td>
+                            <td
+                                className="p-2"
+                                style={{
+                                    color:
+                                        item.sugars === minValues.sugars
+                                            ? "blue"
+                                            : "inherit",
+                                }}
+                            >
+                                {" "}
+                                {item.sugars}
+                            </td>
+                            <td
+                                className="p-2"
+                                style={{
+                                    color:
+                                        item.sodium === minValues.sodium
+                                            ? "blue"
+                                            : "inherit",
+                                }}
+                            >
+                                {" "}
+                                {item.sodium}
+                            </td>
+                            <td
+                                className="p-2"
+                                style={{
+                                    color:
+                                        item.cholesterol ===
+                                        minValues.cholesterol
+                                            ? "blue"
+                                            : "inherit",
+                                }}
+                            >
+                                {" "}
+                                {item.cholesterol}
+                            </td>
+                            <td
+                                className="p-2"
+                                style={{
+                                    color:
+                                        item.saturated_fat ===
+                                        minValues.saturated_fat
+                                            ? "blue"
+                                            : "inherit",
+                                }}
+                            >
+                                {" "}
+                                {item.saturated_fat}
+                            </td>
                             <td className="p-2"> {item.weight}</td>
                             <td className="p-2">
                                 {item.manufacturer ? item.manufacturer : "-"}
