@@ -22,19 +22,19 @@ const ComparisonTable = () => {
     return (
         <div className="flex flex-col rounded-3xl bg-chickenMain">
             <div className="flex items-center justify-between w-full px-24 py-10 text-2xl font-bold border-b-2 border-b-chickenPoint sm:text-sm sm:py-0 sm:px-10">
-                <div className="text-chickenPoint">
+                <div className="text-chickenPoint lg:text-4xl">
                     선택 상품 상세 정보 비교 창 🐔
                 </div>
                 <div className="flex opacity-70">
                     <div
-                        className="flex items-center p-3 m-2 cursor-pointer rounded-3xl hover:bg-chickenPositive"
+                        className="flex items-center p-3 m-2 cursor-pointer rounded-3xl hover:text-white hover:bg-chickenPositive"
                         onClick={handleOnCloseButton}
                     >
                         <FiMinusSquare />
                         선택 창 숨기기
                     </div>
                     <div
-                        className="flex items-center p-3 m-2 cursor-pointer rounded-3xl hover:bg-chickenNegative"
+                        className="flex items-center p-3 m-2 cursor-pointer rounded-3xl hover:text-white hover:bg-chickenNegative "
                         onClick={handleOnClearButton}
                     >
                         <FiXSquare />
@@ -50,7 +50,7 @@ const ComparisonTable = () => {
                             <th className="px-2"> 브랜드 </th>
                             <th className="px-2"> 제품명 </th>
                             <th className="px-2"> 단백질(g) </th>
-                            <th className="px-2"> 에너지(kcal) </th>
+                            <th className="px-2"> 열량(kcal) </th>
                             <th className="px-2"> 지방(g) </th>
                             <th className="px-2"> 탄수화물(g) </th>
                             <th className="px-2"> 당류(g) </th>
@@ -65,7 +65,7 @@ const ComparisonTable = () => {
                         {comparisonData.map((item) => (
                             <tr
                                 key={item.id}
-                                className="border-b hover:bg-chickenHover hover:text-black border-slate-200"
+                                className="border-b hover:bg-chickenHover hover:text-black border-chickenNeutral"
                             >
                                 <td className="p-2">{item.id}</td>
                                 <td className="p-2">
@@ -175,7 +175,7 @@ const ComparisonTable = () => {
                 </table>
             </div>
             <div className="pb-3 mr-8 text-xs text-right text-slate-600 lg:hidden">
-                (번호, 브랜드, 제품명, 단백질, 에너지, 지방, 탄수화물, 당류,
+                (번호, 브랜드, 제품명, 단백질, 열량, 지방, 탄수화물, 당류,
                 나트륨, 콜레스테롤, 포화지방산, 중량, 제조사 순)
             </div>
             <div className="pb-3 mr-8 text-sm text-right text-slate-600 sm:hidden">

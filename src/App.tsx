@@ -10,19 +10,19 @@ const App: React.FC = () => {
   const [filteredData, setFilteredData] = useState<ChickenData[]>([]);
 
     return (
-        <div className="container p-20 mx-auto">
-            <div className="flex items-center justify-center p-20 sm:flex-col">
+        <div className="container p-10">
+            <div className="flex flex-row sm:flex-col">
                 <div>
                     <ProductsFilter onFilter={setFilteredData} />
                     <SearchBox onFilter={setFilteredData} />
                     <ChickenTable filteredData={filteredData} />
                 </div>
-                <div className="w-screen">
+                <div className="lg:p-10 sm:w-screen sm:pr-20">
                     <ComparisonTable />
                 </div>
             </div>
         </div>
     );
 };
-
+//   justify-center p-20 
 export default App;
