@@ -25,9 +25,9 @@ const ComparisonTable = () => {
     }
 
     return (
-        <div className="flex flex-col rounded-3xl bg-chickenMain">
-            <div className="flex items-center justify-between w-full px-24 py-10 text-2xl font-bold border-b-2 border-b-chickenPoint sm:text-sm sm:py-0 sm:px-10">
-                <div className="text-chickenPoint lg:text-4xl">
+        <div className="flex flex-col border-2 rounded-3xl bg-chickenMain border-chickenPoint">
+            <div className="flex items-center justify-between w-full px-24 py-10 text-xl font-bold border-b-2 border-b-chickenPoint sm:text-sm sm:py-0 sm:px-10">
+                <div className="text-chickenPoint lg:text-2xl">
                     선택 상품 상세 정보 비교 창 🐔
                 </div>
                 <div className="flex opacity-70">
@@ -48,7 +48,7 @@ const ComparisonTable = () => {
                 </div>
             </div>
             <div>
-                <table className="m-10 text-center bg-white border-collapse whitespace-nowrap sm:m-5">
+                <table className="m-10 text-center bg-white whitespace-nowrap sm:m-5">
                     <thead className="text-base bg-chickenPoint sm:hidden">
                         <tr>
                             <th className="p-2"> No. </th>
@@ -180,8 +180,9 @@ const ComparisonTable = () => {
                 </table>
             </div>
             <div className="pb-3 mr-8 text-xs text-right text-slate-600 lg:hidden">
-                (번호, 브랜드, 제품명, 단백질, 열량, 지방, 탄수화물, 당류,
-                나트륨, 콜레스테롤, 포화지방산, 중량, 제조사 순)
+                (숫자는 단백질, 열량, 지방, 탄수화물, 당류, 나트륨, 콜레스테롤,
+                포화지방산, 중량 순으로 작성됨. 모든 영양 성분은 100g당 기준으로
+                작성됨.)
             </div>
             <div className="pb-3 mr-8 text-sm text-right text-slate-600 sm:hidden">
                 (모든 영양성분은 100g당 기준으로 작성됨.)
