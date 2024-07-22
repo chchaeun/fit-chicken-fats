@@ -4,9 +4,9 @@ export default {
     theme: {
         extend: {
             colors: {
-                chickenMain: " #ffe5c9",
+                chickenMain: " #FCC580",
                 chickenPoint: "#fc9d38",
-                chickenNeutral: "#fed7aa",
+                chickenNeutral: "#A4A4A4",
                 chickenPositive: "#6cbd7c",
                 chickenNegative: "#fc3838",
                 chickenHover: "#fffec9",
