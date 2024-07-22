@@ -12,7 +12,7 @@ const Footer = () => {
                 className="m-3 text-4xl rounded text-chickenMain hover:text-white hover:bg-chickenPoint"
                 onClick={pageGithub}
             />
-            <div className="flex items-center text-slate-600">
+            <div className="flex items-center text-chickenFont">
                 <div className="py-10 text-xs text-right ">
                     ⓒ 2024. Team-ChickenLabs. All rights reserved. <br />
                     (출처: 식품의약품안전처 식품영양성분 데이터베이스)
