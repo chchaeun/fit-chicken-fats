@@ -48,7 +48,7 @@ const ProductsFilter: React.FC = () => {
     <div className="products-filter-container">
       <div className="filter-header">
         <div className="filter-title">
-          <div className="filter-title-text">브랜드</div>
+          <div className="filter-title-text">브랜드 필터</div>
           <button
             className="toggle-button"
             onClick={() => setShowAllBrands(!showAllBrands)}
