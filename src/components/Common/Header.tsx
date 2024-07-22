@@ -8,15 +8,17 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ onMouseEnter, onMouseLeave }) => {
     return (
-         <div className="w-full border-b-2 border-b-chickenPoint">
+        <div className="w-full border-b-2 border-b-chickenPoint">
             <div className="flex items-center justify-between p-4 text-3xl text-chickenMain">
                 <div className="flex flex-col items-center">
                     <div className="flex items-center">
-                        <img
-                            src={ChickenLabsLogo}
-                            alt="logo"
-                            className="w-44"
-                        />
+                        <a href="/">
+                            <img
+                                src={ChickenLabsLogo}
+                                alt="logo"
+                                className="w-44"
+                            />
+                        </a>
                     </div>
                 </div>
                 <GrCircleQuestion
