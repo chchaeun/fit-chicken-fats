@@ -5,11 +5,11 @@ export default {
         extend: {
             colors: {
                 chickenMain: " #FCC580",
-                chickenPoint: "#fc9d38",
+                chickenPoint: "#FC9D38",
                 chickenNeutral: "#A4A4A4",
-                chickenPositive: "#6cbd7c",
-                chickenNegative: "#fc3838",
-                chickenHover: "#fffec9",
+                chickenPositive: "#6CBD7C",
+                chickenNegative: "#FC3838",
+                chickenHover: "#FFFEC9",
             },
         },
         screens: {
