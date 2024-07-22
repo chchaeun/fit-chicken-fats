@@ -10,7 +10,8 @@ export default {
                 chickenPositive: "#6CBD7C",
                 chickenNegative: "#FC3838",
                 chickenHover: "#FFFEC9",
-                chickenBackground: "#fff4e6",
+                chickenBackground: "#FFF4E6",
+                chickenFont: "#44403C"
             },
         },
         screens: {
