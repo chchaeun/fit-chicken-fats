@@ -2,6 +2,7 @@ import { FiMinusSquare, FiXSquare } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store";
 import { setComparisonActive, clearComparisonData } from "../../store/slices/comparisonSlice";
+import { GiChicken } from "react-icons/gi";
 
 const ComparisonTable = () => {
     const dispatch = useDispatch();
@@ -9,37 +10,36 @@ const ComparisonTable = () => {
         (state: RootState) => state.comparison
     );
 
-    // 선택 비교 창 닫음
     const handleOnCloseButton = () => {
         dispatch(setComparisonActive(false));
     };
     
-    // 모든 체크박스 선택 초기화
     const handleOnClearButton = () => {
         dispatch(clearComparisonData());
     };
 
-    // 사이드바가 비활성화 상태면 null을 반환하여 렌더링하지 않음
     if (!comparisonActive) {
         return null;
     }
 
     return (
-        <div className="flex flex-col border-2 lg:w-7/12 rounded-3xl bg-chickenMain border-chickenPoint whitespace-nowrap">
-            <div className="flex items-center justify-center px-10 py-5 font-bold border-b-2 sm:flex-col border-b-chickenPoint sm:text-sm sm:py-0 sm:px-5">
-                <div className="px-5 pt-3 text-2xl text-chickenPoint sm:p-2">
-                    🐔 선택 제품 상세 정보 비교 🐔
+        <div className="flex flex-col border-2 bg-chickenBackground lg:w-7/12 rounded-3xl border-chickenPoint whitespace-nowrap">
+            <div className="flex items-center justify-between px-10 font-bold border-b-2 sm:justify-center sm:flex-col border-b-chickenPoint sm:text-sm sm:py-5 sm:px-5">
+                <div className="flex items-center p-2 text-2xl text-chickenPoint">
+                    <GiChicken className="text-3xl" />
+                    <p className="px-1">선택 제품 비교</p>
+                    <GiChicken className="text-3xl" />
                 </div>
                 <div className="flex opacity-70">
                     <div
-                        className="flex items-center p-2 m-2 cursor-pointer rounded-3xl hover:text-white hover:bg-chickenPositive sm:mx-5 sm:p-1.5"
+                        className="flex items-center mr-5 cursor-pointer rounded-3xl hover:text-white hover:bg-chickenPositive sm:mx-5 sm:p-1.5"
                         onClick={handleOnCloseButton}
                     >
                         <FiMinusSquare />
                         선택 창 숨기기
                     </div>
                     <div
-                        className="flex items-center p-2 m-2 cursor-pointer rounded-3xl hover:text-white hover:bg-chickenNegative sm:mx-5 sm:px-1.5"
+                        className="flex items-center mr-5 cursor-pointer rounded-3xl hover:text-white hover:bg-chickenNegative sm:mx-5 sm:px-1.5"
                         onClick={handleOnClearButton}
                     >
                         <FiXSquare />
@@ -50,7 +50,7 @@ const ComparisonTable = () => {
             <div className="pt-5 sm:overflow-x-auto">
                 <div className="lg:overflow-x-auto">
                     <table className="mx-auto text-center bg-white whitespace-nowrap">
-                        <thead className="text-sm bg-chickenPoint sm:text-sm">
+                        <thead className="text-sm bg-chickenMain sm:text-sm">
                             <tr>
                                 <th className="p-2"> No. </th>
                                 <th className="px-2"> 브랜드 </th>
@@ -182,15 +182,8 @@ const ComparisonTable = () => {
                         </tbody>
                     </table>
                 </div>
-
                 <div className="text-right">
-                    <div className="py-3 mr-8 text-xs text-slate-600 lg:hidden">
-                        (영양성분은 단백질, 열량, 지방, 탄수화물, 당류, 나트륨,
-                        콜레스테롤, 포화지방산, 중량 순으로 작성되었으며,
-                        <br />
-                        모두 100g 당 함량으로 작성됨.)
-                    </div>
-                    <div className="pb-3 mr-8 text-sm text-slate-600 sm:hidden">
+                    <div className="py-3 mr-8 text-xs text-slate-600 ">
                         (모든 영양성분은 100g 당 함량으로 작성됨.)
                     </div>
                 </div>

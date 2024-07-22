@@ -1,4 +1,5 @@
 import { FaGithubSquare } from "react-icons/fa"
+import { PiChartPieSliceDuotone } from "react-icons/pi";
 
 const Footer = () => {
     const pageGithub = () => {
@@ -8,13 +9,15 @@ const Footer = () => {
     return (
         <div className="flex justify-between border-t-2 border-t-chickenPoint">
             <FaGithubSquare
-                className="m-3 text-4xl text-chickenMain hover:text-chickenPoint"
+                className="m-3 text-4xl rounded text-chickenMain hover:text-white hover:bg-chickenPoint"
                 onClick={pageGithub}
             />
-            <div className="p-10 text-xs text-right text-slate-600">
-                ⓒ 2024. Team-ChickenLabs. All rights reserved.
-                <br />
-                (출처: 식품의약품안전처 식품영양성분 데이터베이스)
+            <div className="flex items-center text-slate-600">
+                <div className="py-10 text-xs text-right ">
+                    ⓒ 2024. Team-ChickenLabs. All rights reserved. <br />
+                    (출처: 식품의약품안전처 식품영양성분 데이터베이스)
+                </div>
+                <PiChartPieSliceDuotone className="mr-6 text-2xl" />
             </div>
         </div>
     );
