@@ -6,4 +6,5 @@ export interface ChickenState {
   currentPage: number;
   filteredResults: ChickenData[];
   searchResults: ChickenData[];
+  selectedBrands: string[],
 }
