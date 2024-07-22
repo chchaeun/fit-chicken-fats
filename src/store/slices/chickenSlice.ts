@@ -8,6 +8,7 @@ const initialState: ChickenState = {
   currentPage: 1,
   filteredResults: [],
   searchResults: [],
+  selectedBrands: [], 
 };
 
 const chickenSlice = createSlice({
@@ -26,9 +27,12 @@ const chickenSlice = createSlice({
     setSearchResults(state, action: PayloadAction<ChickenData[]>) {
       state.searchResults = action.payload;
     },
+    setSelectedBrands(state, action: PayloadAction<string[]>) {
+      state.selectedBrands = action.payload;
+    },
   },
 });
 
-export const { setData, setCurrentPage, setFilteredResults, setSearchResults } =
+export const { setData, setCurrentPage, setFilteredResults, setSearchResults, setSelectedBrands } =
   chickenSlice.actions;
 export const chickenReducer = chickenSlice.reducer;
