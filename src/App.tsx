@@ -14,14 +14,14 @@ const App: React.FC = () => {
     return (
         <>
             <Header />
-            <div className="container p-10">
-                <div className="flex flex-row sm:flex-col">
+            <div className="flex items-center justify-center p-1">
+                <div className="flex flex-row w-full px-5 sm:flex-col">
                     <div>
                         <ProductsFilter onFilter={setFilteredData} />
                         <SearchBox onFilter={setFilteredData} />
                         <ChickenTable filteredData={filteredData} />
                     </div>
-                    <div className="lg:p-10 sm:w-screen sm:pr-20">
+                    <div className="lg:p-10 sm:w-full sm:py-5">
                         <ComparisonTable />
                     </div>
                 </div>
@@ -30,5 +30,5 @@ const App: React.FC = () => {
         </>
     );
 };
-//   justify-center p-20 
+
 export default App;

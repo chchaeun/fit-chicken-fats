@@ -22,7 +22,7 @@ const ComparisonTable = () => {
     return (
         <div className="flex flex-col border-2 lg:w-7/12 rounded-3xl bg-chickenMain border-chickenPoint whitespace-nowrap">
             <div className="flex items-center justify-center px-10 py-5 font-bold border-b-2 sm:flex-col border-b-chickenPoint sm:text-sm sm:py-0 sm:px-5">
-                <div className="px-5 pt-3 text-2xl text-chickenPoint sm:p-2 lg:text-3xl">
+                <div className="px-5 pt-3 text-2xl text-chickenPoint sm:p-2">
                     🐔 선택 제품 상세 정보 비교 🐔
                 </div>
                 <div className="flex opacity-70">
