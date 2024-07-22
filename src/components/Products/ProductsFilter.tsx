@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store";
 import { setFilteredResults } from "../../store/slices/chickenSlice";
-import { brandCheckbox, brandFilter, container } from "./ProductsFilter.css";
 import { ChickenData } from "../../types/ChickenData";
+import './ProductsFilter.css'
 
 const ProductsFilter: React.FC = () => {
   const dispatch = useDispatch();
   const products = useSelector((state: RootState) => state.chicken.data);
   const [selectedBrands, setSelectedBrands] = React.useState<string[]>([]);
+  const [showAllBrands, setShowAllBrands] = useState(false);
   const searchResults = useSelector(
     (state: RootState) => state.chicken.searchResults
   );
@@ -44,20 +45,32 @@ const ProductsFilter: React.FC = () => {
   const brands = Array.from(new Set(products.map((product) => product.brand)));
 
   return (
-    <div className={container}>
-      <h2>브랜드별 필터</h2>
-      <div className={brandFilter}>
-        {brands.map((brand) => (
-          <label key={brand} className={brandCheckbox}>
-            <input
-              type="checkbox"
-              value={brand}
-              onChange={() => handleCheckboxChange(brand)}
-              checked={selectedBrands.includes(brand)}
-            />
-            {brand}
-          </label>
-        ))}
+    <div className="products-filter-container">
+      <div className="filter-header">
+        <div className="filter-title">
+          <div className="filter-title-text">브랜드</div>
+          <button
+            className="toggle-button"
+            onClick={() => setShowAllBrands(!showAllBrands)}
+          >
+            {showAllBrands ? "-" : "+"}
+          </button>
+        </div>
+        <div
+          className={`filter-content ${showAllBrands ? "expanded" : "collapsed"}`}
+        >
+          {brands.map((brand) => (
+            <label key={brand} className="brand-checkbox">
+              <input
+                type="checkbox"
+                value={brand}
+                onChange={() => handleCheckboxChange(brand)}
+                checked={selectedBrands.includes(brand)}
+              />
+              {brand}
+            </label>
+          ))}
+        </div>
       </div>
     </div>
   );
