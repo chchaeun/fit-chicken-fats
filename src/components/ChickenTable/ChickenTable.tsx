@@ -74,7 +74,7 @@ const ChickenTable: React.FC = () => {
             <th>브랜드</th>
             <th>제품명</th>
             <th>단백질(g)</th>
-            <th>에너지(kcal)</th>
+            <th>열량(kcal)</th>
           </tr>
         </thead>
         <tbody>
