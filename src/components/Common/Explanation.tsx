@@ -2,7 +2,7 @@ import React from "react";
 
 const Explanation: React.FC = () => {
     return (
-        <div className="absolute z-10 px-3 py-2 text-sm text-white rounded-lg shadow-xl bg-chickenPoint right-11 top-24 opacity-9">
+        <div className="absolute z-10 px-3 py-2 text-sm text-white rounded-lg shadow-xl bg-chickenPoint right-6 top-24 opacity-9">
             <div className="">
                 <p className="p-3 text-lg text-center border-b-2 border-chickenPoint">
                     📘 사용 안내 📘
