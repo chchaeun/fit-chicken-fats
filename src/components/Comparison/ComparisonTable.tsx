@@ -25,21 +25,21 @@ const ComparisonTable = () => {
     }
 
     return (
-        <div className="flex flex-col border-2 rounded-3xl bg-chickenMain border-chickenPoint">
-            <div className="flex items-center justify-between w-full px-24 py-10 text-xl font-bold border-b-2 border-b-chickenPoint sm:text-sm sm:py-0 sm:px-10">
-                <div className="text-chickenPoint lg:text-2xl">
+        <div className="flex flex-col border-2 rounded-3xl bg-chickenMain border-chickenPoint whitespace-nowrap">
+            <div className="flex items-center justify-between w-full px-24 py-10 text-xl font-bold border-b-2 border-b-chickenPoint sm:text-sm sm:py-0 sm:px-5">
+                <div className="text-chickenPoint lg:text-2xl sm:p-2">
                     선택 상품 상세 정보 비교 창 🐔
                 </div>
                 <div className="flex opacity-70">
                     <div
-                        className="flex items-center p-3 m-2 cursor-pointer rounded-3xl hover:text-white hover:bg-chickenPositive"
+                        className="flex items-center p-3 m-2 cursor-pointer rounded-3xl hover:text-white hover:bg-chickenPositive sm:m-0 sm:p-0.5"
                         onClick={handleOnCloseButton}
                     >
                         <FiMinusSquare />
                         선택 창 숨기기
                     </div>
                     <div
-                        className="flex items-center p-3 m-2 cursor-pointer rounded-3xl hover:text-white hover:bg-chickenNegative "
+                        className="flex items-center p-3 m-2 cursor-pointer rounded-3xl hover:text-white hover:bg-chickenNegative sm:m-0 sm:p-0.5"
                         onClick={handleOnClearButton}
                     >
                         <FiXSquare />
@@ -47,8 +47,8 @@ const ComparisonTable = () => {
                     </div>
                 </div>
             </div>
-            <div>
-                <table className="m-10 text-center bg-white whitespace-nowrap sm:m-5">
+            <div className="overflow-x-auto">
+                <table className="mx-auto text-center bg-white lg:m-10 whitespace-nowrap">
                     <thead className="text-base bg-chickenPoint sm:hidden">
                         <tr>
                             <th className="p-2"> No. </th>
