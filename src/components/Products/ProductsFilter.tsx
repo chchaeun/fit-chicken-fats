@@ -1,14 +1,15 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store";
-import { setFilteredResults, setSelectedBrands } from "../../store/slices/chickenSlice";
-import { brandCheckbox, brandFilter, container } from "./ProductsFilter.css";
+import { setFilteredResults } from "../../store/slices/chickenSlice";
 import { ChickenData } from "../../types/ChickenData";
+import './ProductsFilter.css'
 
 const ProductsFilter: React.FC = () => {
   const dispatch = useDispatch();
   const products = useSelector((state: RootState) => state.chicken.data);
-  const selectedBrands = useSelector((state: RootState) => state.chicken.selectedBrands);
+  const [selectedBrands, setSelectedBrands] = React.useState<string[]>([]);
+  const [showAllBrands, setShowAllBrands] = useState(false);
   const searchResults = useSelector(
     (state: RootState) => state.chicken.searchResults
   );
@@ -47,7 +48,7 @@ const ProductsFilter: React.FC = () => {
     <div className="products-filter-container">
       <div className="filter-header">
         <div className="filter-title">
-          <div className="filter-title-text">브랜드 필터</div>
+          <div className="filter-title-text">브랜드</div>
           <button
             className="toggle-button"
             onClick={() => setShowAllBrands(!showAllBrands)}
