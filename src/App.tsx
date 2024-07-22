@@ -22,14 +22,14 @@ const App: React.FC = () => {
             <div className="flex justify-end">
                 {showExplanation ? <Explanation /> : null}
             </div>
-            <div className="flex items-center justify-center p-1">
-                <div className="flex flex-row w-full px-5 sm:flex-col">
+            <div className="flex items-center justify-center p-1 px-3">
+                <div className="flex flex-row w-full sm:flex-col">
                     <div>
                         <ProductsFilter onFilter={setFilteredData} />
                         <SearchBox onFilter={setFilteredData} />
                         <ChickenTable filteredData={filteredData} />
                     </div>
-                    <div className="lg:p-10 sm:w-full sm:py-5">
+                    <div className="lg:py-10 sm:w-full sm:py-5">
                         <ComparisonTable />
                     </div>
                 </div>
