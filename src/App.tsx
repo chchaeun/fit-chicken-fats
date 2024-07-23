@@ -8,6 +8,7 @@ import SearchBox from "./components/SearchBox/SearchBox"
 import Footer from "./components/Common/Footer";
 import Header from "./components/Common/Header";
 import Explanation from "./components/Common/Explanation";
+import AverageTable from "./components/AverageTable/AverageTable";
 
 const App: React.FC = () => {
     const [filteredData, setFilteredData] = useState<ChickenData[]>([]);
@@ -26,6 +27,7 @@ const App: React.FC = () => {
                 <div className="flex flex-row w-full sm:flex-col">
                     <div>
                         <ProductsFilter onFilter={setFilteredData} />
+                        <AverageTable />
                         <SearchBox onFilter={setFilteredData} />
                         <ChickenTable filteredData={filteredData} />
                     </div>
