@@ -34,11 +34,11 @@ const ProductsFilter: React.FC = () => {
 
   // 브랜드 별 체크박스 변경 핸들링
   const handleCheckboxChange = (brand: string) => {
-    setSelectedBrands((prevSelectedBrands) =>
-      prevSelectedBrands.includes(brand)
-        ? prevSelectedBrands.filter((b) => b !== brand)
-        : [...prevSelectedBrands, brand]
-    );
+    const newSelectedBrands = selectedBrands.includes(brand)
+      ? selectedBrands.filter((b) => b !== brand)
+      : [...selectedBrands, brand];
+    
+    dispatch(setSelectedBrands(newSelectedBrands));
   };
 
   // 제품 브랜드 가져오기
