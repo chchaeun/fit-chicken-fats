@@ -31,7 +31,7 @@ const ChickenTable: React.FC = () => {
 
   // 데이터 가져오기
   useEffect(() => {
-    fetch("../../../public/data/products.json")
+    fetch("/src/data/products.json")
       .then((response) => response.json())
       .then((data) => dispatch(setData(data)));
   }, [dispatch]);

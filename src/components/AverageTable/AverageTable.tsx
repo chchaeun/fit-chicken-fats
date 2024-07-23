@@ -1,6 +1,6 @@
 import React from "react";
-import overallAveragesData from "../../../public/data/overall_averages.json";
-import brandAveragesData from "../../../public/data/brand_averages.json";
+import overallAveragesData from "../../data/overall_averages.json";
+import brandAveragesData from "../../data/brand_averages.json";
 import { NutritionData, BrandAverages } from "../../types/AverageData";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
