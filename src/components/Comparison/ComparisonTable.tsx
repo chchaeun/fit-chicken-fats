@@ -50,7 +50,7 @@ const ComparisonTable = () => {
             <div className="pt-5 sm:overflow-x-auto">
                 <div className="lg:overflow-x-auto">
                     <table className="mx-auto text-center bg-white whitespace-nowrap">
-                        <thead className="text-sm bg-chickenMain sm:text-sm">
+                        <thead className="text-sm bg-chickenMain">
                             <tr>
                                 <th className="p-2"> No. </th>
                                 <th className="px-2"> 브랜드 </th>
@@ -182,10 +182,8 @@ const ComparisonTable = () => {
                         </tbody>
                     </table>
                 </div>
-                <div className="text-right">
-                    <div className="py-3 mr-8 text-xs">
-                        (모든 영양성분은 100g 당 함량으로 작성됨.)
-                    </div>
+                <div className="py-3 mr-8 text-xs text-right">
+                    (모든 영양성분은 100g 당 함량으로 작성됨.)
                 </div>
             </div>
         </div>
