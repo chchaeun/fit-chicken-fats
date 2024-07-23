@@ -80,7 +80,7 @@ const ComparisonTable = () => {
                             <td>{item.calories}</td>
                             <td>{item.protein}</td>
                             <td> {item.fat}</td>
-                            <td> {item.calbohydrate}</td>
+                            <td> {item.carbohydrate}</td>
                             <td> {item.sugars}</td>
                             <td> {item.sodium}</td>
                             <td> {item.cholesterol}</td>
