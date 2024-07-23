@@ -5,7 +5,7 @@ export interface ChickenData {
   calories: number;
   protein: number;
   fat: number;
-  calbohydrate: number;
+  carbohydrate: number;
   sugars: number;
   sodium: number;
   cholesterol: number;
