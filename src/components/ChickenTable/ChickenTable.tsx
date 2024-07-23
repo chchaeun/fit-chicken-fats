@@ -4,7 +4,6 @@ import { AppDispatch, RootState } from "../../store";
 import {
   setCurrentPage,
   setData,
-  setFilteredResults,
 } from "../../store/slices/chickenSlice";
 import { ChickenData } from "../../types/ChickenData";
 import "./ChickenTable.css";
@@ -74,7 +73,7 @@ const ChickenTable: React.FC = () => {
             <th>브랜드</th>
             <th>제품명</th>
             <th>단백질(g)</th>
-            <th>에너지(kcal)</th>
+            <th>열량(kcal)</th>
           </tr>
         </thead>
         <tbody>
