@@ -4,7 +4,6 @@ import { AppDispatch, RootState } from "../../store";
 import {
   setCurrentPage,
   setData,
-  setFilteredResults,
 } from "../../store/slices/chickenSlice";
 import { ChickenData } from "../../types/ChickenData";
 import "./ChickenTable.css";
