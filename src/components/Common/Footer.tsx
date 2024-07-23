@@ -2,7 +2,7 @@ import { FaGithubSquare } from "react-icons/fa"
 import { PiChartPieSliceDuotone } from "react-icons/pi";
 
 const Footer = () => {
-    const pageGithub = () => {
+    const newPageGithub = () => {
         window.open("https://github.com/chchaeun/fit-chicken-fats");
     }
     
@@ -10,7 +10,7 @@ const Footer = () => {
         <div className="flex justify-between border-t-2 border-t-chickenPoint">
             <FaGithubSquare
                 className="m-3 text-4xl rounded text-chickenMain hover:text-white hover:bg-chickenPoint"
-                onClick={pageGithub}
+                onClick={newPageGithub}
             />
             <div className="flex items-center text-chickenFont">
                 <div className="py-10 text-xs text-right ">
