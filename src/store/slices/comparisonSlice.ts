@@ -10,7 +10,7 @@ type ComparisonState = {
     minValues: {
         calories: number | null;
         fat: number | null;
-        calbohydrate: number | null;
+        carbohydrate: number | null;
         sugars: number | null;
         sodium: number | null;
         cholesterol: number | null;
@@ -27,7 +27,7 @@ const initialState: ComparisonState = {
     minValues: {
         calories: null,
         fat: null,
-        calbohydrate: null,
+        carbohydrate: null,
         sugars: null,
         sodium: null,
         cholesterol: null,
@@ -55,7 +55,7 @@ const calculateMinValues = (data: ChickenData[]) => {
     return {
         calories: mathMin(data, "calories"),
         fat: mathMin(data, "fat"),
-        calbohydrate: mathMin(data, "calbohydrate"),
+        carbohydrate: mathMin(data, "carbohydrate"),
         sugars: mathMin(data, "sugars"),
         sodium: mathMin(data, "sodium"),
         cholesterol: mathMin(data, "cholesterol"),

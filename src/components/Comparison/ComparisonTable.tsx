@@ -117,13 +117,13 @@ const ComparisonTable = () => {
                                         className="p-2"
                                         style={{
                                             color:
-                                                item.calbohydrate ===
-                                                minValues.calbohydrate
+                                                item.carbohydrate ===
+                                                minValues.carbohydrate
                                                     ? "blue"
                                                     : "inherit",
                                         }}
                                     >
-                                        {item.calbohydrate}
+                                        {item.carbohydrate}
                                     </td>
                                     <td
                                         className="p-2"
