@@ -43,6 +43,7 @@ const ProductsFilter: React.FC = () => {
 
   // 제품 브랜드 가져오기
   const brands = Array.from(new Set(products.map((product) => product.brand)));
+
   return (
     <div className="p-5">
       <div className="flex items-start mb-4">
@@ -55,7 +56,7 @@ const ProductsFilter: React.FC = () => {
             className="bg-gray-200 p-2 rounded"
             onClick={() => setShowAllBrands(!showAllBrands)}
           >
-            {showAllBrands ? <FaMinus /> : <FaPlus />}
+            {showAllBrands ? <FaMinus size={12}/> : <FaPlus size={12}/>}
           </button>
         </div>
         <div
