@@ -1,14 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store";
-import { setFilteredResults, setSelectedBrands } from "../../store/slices/chickenSlice";
-import { brandCheckbox, brandFilter, container } from "./ProductsFilter.css";
+import { setFilteredResults } from "../../store/slices/chickenSlice";
 import { ChickenData } from "../../types/ChickenData";
+import { FaPlus, FaMinus } from "react-icons/fa";
 
 const ProductsFilter: React.FC = () => {
   const dispatch = useDispatch();
   const products = useSelector((state: RootState) => state.chicken.data);
-  const selectedBrands = useSelector((state: RootState) => state.chicken.selectedBrands);
+  const [selectedBrands, setSelectedBrands] = React.useState<string[]>([]);
+  const [showAllBrands, setShowAllBrands] = useState(false);
   const searchResults = useSelector(
     (state: RootState) => state.chicken.searchResults
   );
@@ -21,7 +22,7 @@ const ProductsFilter: React.FC = () => {
         )
       : products;
 
-    // 검색 결과와 필터링 결과 교집합
+    // 검색 결과와 필터링 결과 교집합 
     if (searchResults.length > 0) {
       filteredData = filteredData.filter((product: ChickenData) =>
         searchResults.some((searchItem) => searchItem.id === product.id)
@@ -50,20 +51,38 @@ const ProductsFilter: React.FC = () => {
   );
 
   return (
-    <div className={container}>
-      <h2>브랜드별 필터</h2>
-      <div className={brandFilter}>
-        {brands.map((brand) => (
-          <label key={brand} className={brandCheckbox}>
-            <input
-              type="checkbox"
-              value={brand}
-              onChange={() => handleCheckboxChange(brand)}
-              checked={selectedBrands.includes(brand)}
-            />
-            {brand}
-          </label>
-        ))}
+    <div className="p-5">
+      <div className="flex items-start mb-4">
+        <div
+          className="flex items-center border p-2 rounded mr-2 flex-shrink-0"
+          style={{ height: '3rem' }}
+        >
+          <h2 className="text-base mr-2 whitespace-nowrap">브랜드</h2>
+          <button
+            className="bg-gray-200 p-2 rounded"
+            onClick={() => setShowAllBrands(!showAllBrands)}
+          >
+            {showAllBrands ? <FaMinus size={12}/> : <FaPlus size={12}/>}
+          </button>
+        </div>
+        <div
+          className={`flex flex-wrap items-center gap-2 flex-grow border p-2.5 rounded overflow-hidden transition-all duration-300 ${
+            showAllBrands ? "h-auto" : "h-12"
+          }`}
+        >
+          {brands.map((brand) => (
+            <label key={brand} className="inline-flex items-center mr-4">
+              <input
+                type="checkbox"
+                value={brand}
+                onChange={() => handleCheckboxChange(brand)}
+                checked={selectedBrands.includes(brand)}
+                className="mr-1"
+              />
+              {brand || "기타"}
+            </label>
+          ))}
+        </div>
       </div>
     </div>
   );
