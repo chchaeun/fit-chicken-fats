@@ -3,7 +3,7 @@ import ChickenTable from "./components/ChickenTable/ChickenTable";
 import ProductsFilter from "./components/Products/ProductsFilter";
 import "./App.css";
 import ComparisonTable from "./components/Comparison/ComparisonTable";
-import SearchBox from "./components/SearchBox/SearchBox"
+import SearchBox from "./components/SearchBox/SearchBox";
 import Footer from "./components/Common/Footer";
 import Header from "./components/Common/Header";
 import Explanation from "./components/Common/Explanation";
@@ -21,18 +21,16 @@ const App: React.FC = () => {
             <div className="flex justify-end">
                 {showExplanation ? <Explanation /> : null}
             </div>
-            <div className="flex items-center justify-center p-1 px-3">
-                <div className="flex flex-col w-4/5 sm:flex-col">
-                    <div>
-                        <ProductsFilter />
-                        <AverageTable />
-                    </div>
-                    <div>
-                        <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center justify-center p-1 px-3">
+                <div className="flex flex-col w-4/5">
+                    <ProductsFilter />
+                    <AverageTable />
+                    <div className="flex w-full">
+                        <div className="flex flex-col items-center flex-grow">
                             <SearchBox />
                             <ChickenTable />
                         </div>
-                        <div className="lg:py-10 sm:w-full sm:py-5">
+                        <div className="mt-20 ml-10 lg:py-10 sm:w-full sm:py-5 flex-shrink-0">
                             <ComparisonTable />
                         </div>
                     </div>
