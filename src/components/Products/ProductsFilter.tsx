@@ -41,7 +41,13 @@ const ProductsFilter: React.FC = () => {
   };
 
   // 제품 브랜드 가져오기
-  const brands = Array.from(new Set(products.map((product) => product.brand)));
+  const brands = Array.from(
+    new Set(
+      products
+        .map((product) => product.brand)
+        .filter((brand): brand is string => brand !== null) // null 제외
+    )
+  );
 
   return (
     <div className={container}>
