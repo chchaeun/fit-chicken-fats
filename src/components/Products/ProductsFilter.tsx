@@ -54,30 +54,31 @@ const ProductsFilter: React.FC = () => {
     <div className="p-5">
       <div className="flex items-start mb-4">
         <div
-          className="flex items-center border p-2 rounded mr-2 flex-shrink-0"
+          className="flex items-center border-2 p-2 rounded mr-2 flex-shrink-0 border-chickenPoint"
           style={{ height: '3rem' }}
         >
           <h2 className="text-base mr-2 whitespace-nowrap">브랜드</h2>
           <button
-            className="bg-gray-200 p-2 rounded"
+            className="bg-chickenMain p-2 rounded"
             onClick={() => setShowAllBrands(!showAllBrands)}
           >
-            {showAllBrands ? <FaMinus size={12}/> : <FaPlus size={12}/>}
+            {showAllBrands ? <FaMinus size={12} color="#FFFEC9"/> : <FaPlus size={12} color="#FFFEC9"/>}
           </button>
         </div>
         <div
-          className={`flex flex-wrap items-center gap-2 flex-grow border p-2.5 rounded overflow-hidden transition-all duration-300 ${
+          className={`flex flex-wrap items-center gap-2 flex-grow border-2 p-2.5 rounded overflow-hidden transition-all duration-300 border-chickenPoint ${
             showAllBrands ? "h-auto" : "h-12"
           }`}
         >
           {brands.map((brand) => (
             <label key={brand} className="inline-flex items-center mr-4">
               <input
+                className="mr-1"
+                chekch id="orange-checkbox"
                 type="checkbox"
                 value={brand}
                 onChange={() => handleCheckboxChange(brand)}
                 checked={selectedBrands.includes(brand)}
-                className="mr-1"
               />
               {brand || "기타"}
             </label>
