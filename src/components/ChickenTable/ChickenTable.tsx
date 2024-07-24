@@ -81,7 +81,7 @@ const ChickenTable: React.FC = () => {
               </td>
               <td className="py-2 px-4 border-b">{item.brand}</td>
               <td className="py-2 px-4 border-b">{item.product_name}</td>
-              <td className="py-2 px-4 border-b">{item.protein}</td>
+              <td className="py-2 px-4 border-b">{item.protein.toFixed(1)}</td>
               <td className="py-2 px-4 border-b">{item.calories}</td>
             </tr>
           ))}
