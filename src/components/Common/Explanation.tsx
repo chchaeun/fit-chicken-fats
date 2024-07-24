@@ -3,7 +3,7 @@ import { GrHelpBook } from "react-icons/gr";
 
 const Explanation: React.FC = () => {
     return (
-        <div className="absolute z-10 p-1 text-sm rounded-md shadow-xl text-chickenFont bg-chickenPoint right-6 top-24 opacity-95">
+        <div className="absolute z-10 p-1 text-sm rounded-md shadow-xl text-chickenFont bg-chickenPoint right-6 top-20 opacity-95">
             <div className="rounded-md bg-chickenBackground">
                 <div className="flex items-center justify-center p-3 text-2xl font-bold border-b-2 border-chickenPoint text-chickenPoint">
                     <GrHelpBook />

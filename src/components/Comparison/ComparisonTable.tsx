@@ -23,7 +23,7 @@ const ComparisonTable = () => {
     }
 
     return (
-        <div className="flex flex-col max-w-3xl border-2 bg-chickenBackground rounded-3xl border-chickenPoint whitespace-nowrap text-chickenFont">
+        <div className="flex flex-col max-w-2xl mx-5 border-2 sm:max-w-full bg-chickenBackground rounded-3xl border-chickenPoint whitespace-nowrap text-chickenFont">
             <div className="flex items-center justify-between px-10 font-bold border-b-2 sm:justify-center sm:flex-col border-b-chickenPoint sm:text-sm sm:py-5 sm:px-5">
                 <div className="flex items-center p-2 text-2xl text-chickenPoint">
                     <GiChicken className="text-3xl" />
