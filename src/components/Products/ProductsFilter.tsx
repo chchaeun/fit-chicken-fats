@@ -2,16 +2,13 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store";
 import { setFilteredResults, setSelectedBrands } from "../../store/slices/chickenSlice";
-import { brandCheckbox, brandFilter, container } from "./ProductsFilter.css";
 import { ChickenData } from "../../types/ChickenData";
 
 const ProductsFilter: React.FC = () => {
   const dispatch = useDispatch();
   const products = useSelector((state: RootState) => state.chicken.data);
   const selectedBrands = useSelector((state: RootState) => state.chicken.selectedBrands);
-  const searchResults = useSelector(
-    (state: RootState) => state.chicken.searchResults
-  );
+  const searchResults = useSelector((state: RootState) => state.chicken.searchResults);
 
   // 브랜드별 필터링
   useEffect(() => {
@@ -50,18 +47,19 @@ const ProductsFilter: React.FC = () => {
   );
 
   return (
-    <div className={container}>
-      <h2>브랜드별 필터</h2>
-      <div className={brandFilter}>
+    <div className="p-4 m-4 bg-chickenBackground rounded-lg shadow-md">
+      <h2 className="text-2xl font-bold mb-4 text-chickenFont">브랜드별 필터</h2>
+      <div className="grid grid-cols-6 sm:grid-cols-1 gap-2">
         {brands.map((brand) => (
-          <label key={brand} className={brandCheckbox}>
+          <label key={brand} className="flex items-center">
             <input
               type="checkbox"
               value={brand}
               onChange={() => handleCheckboxChange(brand)}
               checked={selectedBrands.includes(brand)}
+              className="mr-2"
             />
-            {brand}
+            <span className="text-chickenFont">{brand}</span>
           </label>
         ))}
       </div>

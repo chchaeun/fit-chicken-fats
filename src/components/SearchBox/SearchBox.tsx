@@ -6,7 +6,6 @@ import {
   setSearchResults,
   setFilteredResults,
 } from "../../store/slices/chickenSlice";
-import "./SearchBox.css";
 
 const SearchBox: React.FC = () => {
   const dispatch = useDispatch();
@@ -60,18 +59,23 @@ const SearchBox: React.FC = () => {
     setQuery(event.target.value);
   };
 
+
   return (
-    <div className="header">
+    <div className="flex items-center justify-center p-4 m-4 w-1/2 bg-chickenBackground rounded-lg shadow-md">
       <input
         type="text"
-        className="iptSearch"
+        className="w-full p-2 mr-2 border-2 border-chickenPoint rounded-lg focus:outline-none focus:ring-2 focus:ring-chickenMain"
         id="keyword"
         value={query}
         onChange={handleSearchChange}
         onKeyPress={handleKeyPress}
         placeholder="제품명 검색"
       />
-      <button type="button" className="search" onClick={handleSearch}>
+      <button
+        type="button"
+        className="px-4 py-2 text-white bg-chickenPoint rounded-lg hover:bg-chickenPositive focus:outline-none focus:ring-2 focus:ring-chickenMain"
+        onClick={handleSearch}
+      >
         <span>검색</span>
       </button>
     </div>
