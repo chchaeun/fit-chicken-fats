@@ -57,7 +57,7 @@ const ProductsFilter: React.FC = () => {
           className="flex items-center border-2 p-2 rounded mr-2 flex-shrink-0 border-chickenPoint"
           style={{ height: '3rem' }}
         >
-          <h2 className="text-base mr-2 whitespace-nowrap">브랜드</h2>
+          <h2 className="mr-2 whitespace-nowrap text-chickenPoint">브랜드</h2>
           <button
             className="bg-chickenMain p-2 rounded"
             onClick={() => setShowAllBrands(!showAllBrands)}
@@ -73,12 +73,13 @@ const ProductsFilter: React.FC = () => {
           {brands.map((brand) => (
             <label key={brand} className="inline-flex items-center mr-4">
               <input
-                className="mr-1"
+                className="hidden peer"
                 type="checkbox"
                 value={brand}
                 onChange={() => handleCheckboxChange(brand)}
                 checked={selectedBrands.includes(brand)}
               />
+              <div className="w-4 h-4 mr-2 border-2 rounded cursor-pointer peer-checked:bg-chickenMain border-chickenPoint" />
               {brand || "기타"}
             </label>
           ))}
