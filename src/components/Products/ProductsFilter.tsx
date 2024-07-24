@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store";
 import { setFilteredResults, setSelectedBrands } from "../../store/slices/chickenSlice";
 import { ChickenData } from "../../types/ChickenData";
-import { FaPlus, FaMinus } from "react-icons/fa";
+import { FaPlus, FaMinus, FaCheck } from "react-icons/fa";
 
 const ProductsFilter: React.FC = () => {
   const dispatch = useDispatch();
@@ -79,7 +79,9 @@ const ProductsFilter: React.FC = () => {
                 onChange={() => handleCheckboxChange(brand)}
                 checked={selectedBrands.includes(brand)}
               />
-              <div className="w-4 h-4 mr-2 border-2 rounded cursor-pointer peer-checked:bg-chickenMain border-chickenPoint" />
+              <div className="w-4 h-4 mr-2 border-2 rounded cursor-pointer peer-checked:bg-chickenPoint border-chickenPoint flex items-center justify-center">
+                {selectedBrands.includes(brand) && <FaCheck className="text-white" size={12} />}
+              </div>
               {brand || "기타"}
             </label>
           ))}
