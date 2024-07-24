@@ -74,7 +74,6 @@ const ProductsFilter: React.FC = () => {
             <label key={brand} className="inline-flex items-center mr-4">
               <input
                 className="mr-1"
-                chekch id="orange-checkbox"
                 type="checkbox"
                 value={brand}
                 onChange={() => handleCheckboxChange(brand)}
