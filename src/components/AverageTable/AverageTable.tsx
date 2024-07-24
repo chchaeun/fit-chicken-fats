@@ -35,7 +35,7 @@ const AverageTable: React.FC = () => {
     <div className="container mx-auto p-4 m-4 bg-chickenBackground rounded-lg shadow-md">
       <h2 className="text-2xl font-bold mb-4 text-chickenFont">평균 영양성분</h2>
       <div className="overflow-x-auto">
-        <table className="min-w-full border-collapse">
+        <table className="min-w-full border-collapse text-center">
           <thead className="bg-chickenMain text-chickenFont">
             <tr>
               <th className="px-4 py-2 border-b border-chickenNeutral">브랜드</th>

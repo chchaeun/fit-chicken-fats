@@ -55,7 +55,7 @@ const ChickenTable: React.FC = () => {
 
   return (
     <div className="w-full p-4 bg-chickenBackground rounded-lg shadow-md">
-      <table className="min-w-full bg-white rounded-lg">
+      <table className="min-w-full bg-white rounded-lg text-center">
         <thead className="bg-chickenMain text-chickenFont">
           <tr>
             <th className="py-2 px-4 border-b">선택</th>
