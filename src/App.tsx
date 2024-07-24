@@ -22,15 +22,19 @@ const App: React.FC = () => {
                 {showExplanation ? <Explanation /> : null}
             </div>
             <div className="flex items-center justify-center p-1 px-3">
-                <div className="flex flex-row w-full sm:flex-col">
+                <div className="flex flex-col w-4/5 sm:flex-col">
                     <div>
                         <ProductsFilter />
                         <AverageTable />
-                        <SearchBox />
-                        <ChickenTable />
                     </div>
-                    <div className="lg:py-10 sm:w-full sm:py-5">
-                        <ComparisonTable />
+                    <div>
+                        <div className="flex flex-col items-center">
+                            <SearchBox />
+                            <ChickenTable />
+                        </div>
+                        <div className="lg:py-10 sm:w-full sm:py-5">
+                            <ComparisonTable />
+                        </div>
                     </div>
                 </div>
             </div>
