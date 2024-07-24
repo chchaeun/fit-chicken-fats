@@ -59,7 +59,7 @@ const ProductsFilter: React.FC = () => {
         >
           <h2 className="mr-2 whitespace-nowrap text-chickenPoint">브랜드</h2>
           <button
-            className="bg-chickenMain p-2 rounded"
+            className="bg-chickenPoint p-2 rounded"
             onClick={() => setShowAllBrands(!showAllBrands)}
           >
             {showAllBrands ? <FaMinus size={12} color="#FFFEC9"/> : <FaPlus size={12} color="#FFFEC9"/>}
