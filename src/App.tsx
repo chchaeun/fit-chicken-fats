@@ -30,7 +30,7 @@ const App: React.FC = () => {
                         <SearchBox onFilter={setFilteredData} />
                         <ChickenTable filteredData={filteredData} />
                     </div>
-                    <div className="lg:py-10 sm:w-full sm:py-5">
+                    <div className="lg:py-10 sm:w-auto sm:py-5 sm:flex-col">
                         <ComparisonTable />
                     </div>
                 </div>
