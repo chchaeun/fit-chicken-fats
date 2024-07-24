@@ -38,7 +38,7 @@ const initialState: ComparisonState = {
 const calculateMaxValues = (data: ChickenData[]) => {
     const mathMax = (data: ChickenData[], property: keyof ChickenData) => {
         return data.length > 1
-            ? Math.max(...data.map((i) => i[property]))
+            ? Math.max(...data.map((i) => i[property] as number))
             : null;
     };
     return {
@@ -48,7 +48,7 @@ const calculateMaxValues = (data: ChickenData[]) => {
 const calculateMinValues = (data: ChickenData[]) => {
     const mathMin = (data: ChickenData[], property: keyof ChickenData) => {
         return data.length > 1
-            ? Math.min(...data.map((i) => i[property]))
+            ? Math.min(...data.map((i) => i[property] as number))
             : null;
     };
 

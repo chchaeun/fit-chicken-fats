@@ -1,0 +1,11 @@
+// vite.config.ts
+import { defineConfig } from "file:///C:/Users/Win/Desktop/%EB%8D%B0%EB%B8%8C%EC%BD%94%EC%8A%A4/fit-chicken-fats/node_modules/vite/dist/node/index.js";
+import react from "file:///C:/Users/Win/Desktop/%EB%8D%B0%EB%B8%8C%EC%BD%94%EC%8A%A4/fit-chicken-fats/node_modules/@vitejs/plugin-react/dist/index.mjs";
+import { vanillaExtractPlugin } from "file:///C:/Users/Win/Desktop/%EB%8D%B0%EB%B8%8C%EC%BD%94%EC%8A%A4/fit-chicken-fats/node_modules/@vanilla-extract/vite-plugin/dist/vanilla-extract-vite-plugin.cjs.js";
+var vite_config_default = defineConfig({
+  plugins: [react(), vanillaExtractPlugin()]
+});
+export {
+  vite_config_default as default
+};
+//# sourceMappingURL=data:application/json;base64,ewogICJ2ZXJzaW9uIjogMywKICAic291cmNlcyI6IFsidml0ZS5jb25maWcudHMiXSwKICAic291cmNlc0NvbnRlbnQiOiBbImNvbnN0IF9fdml0ZV9pbmplY3RlZF9vcmlnaW5hbF9kaXJuYW1lID0gXCJDOlxcXFxVc2Vyc1xcXFxXaW5cXFxcRGVza3RvcFxcXFxcdUIzNzBcdUJFMENcdUNGNTRcdUMyQTRcXFxcZml0LWNoaWNrZW4tZmF0c1wiO2NvbnN0IF9fdml0ZV9pbmplY3RlZF9vcmlnaW5hbF9maWxlbmFtZSA9IFwiQzpcXFxcVXNlcnNcXFxcV2luXFxcXERlc2t0b3BcXFxcXHVCMzcwXHVCRTBDXHVDRjU0XHVDMkE0XFxcXGZpdC1jaGlja2VuLWZhdHNcXFxcdml0ZS5jb25maWcudHNcIjtjb25zdCBfX3ZpdGVfaW5qZWN0ZWRfb3JpZ2luYWxfaW1wb3J0X21ldGFfdXJsID0gXCJmaWxlOi8vL0M6L1VzZXJzL1dpbi9EZXNrdG9wLyVFQiU4RCVCMCVFQiVCOCU4QyVFQyVCRCU5NCVFQyU4QSVBNC9maXQtY2hpY2tlbi1mYXRzL3ZpdGUuY29uZmlnLnRzXCI7aW1wb3J0IHsgZGVmaW5lQ29uZmlnIH0gZnJvbSBcInZpdGVcIjtcclxuaW1wb3J0IHJlYWN0IGZyb20gXCJAdml0ZWpzL3BsdWdpbi1yZWFjdFwiO1xyXG5pbXBvcnQgeyB2YW5pbGxhRXh0cmFjdFBsdWdpbiB9IGZyb20gXCJAdmFuaWxsYS1leHRyYWN0L3ZpdGUtcGx1Z2luXCI7XHJcblxyXG4vLyBodHRwczovL3ZpdGVqcy5kZXYvY29uZmlnL1xyXG5leHBvcnQgZGVmYXVsdCBkZWZpbmVDb25maWcoe1xyXG4gIHBsdWdpbnM6IFtyZWFjdCgpLCB2YW5pbGxhRXh0cmFjdFBsdWdpbigpXSxcclxufSk7Il0sCiAgIm1hcHBpbmdzIjogIjtBQUE0VixTQUFTLG9CQUFvQjtBQUN6WCxPQUFPLFdBQVc7QUFDbEIsU0FBUyw0QkFBNEI7QUFHckMsSUFBTyxzQkFBUSxhQUFhO0FBQUEsRUFDMUIsU0FBUyxDQUFDLE1BQU0sR0FBRyxxQkFBcUIsQ0FBQztBQUMzQyxDQUFDOyIsCiAgIm5hbWVzIjogW10KfQo=

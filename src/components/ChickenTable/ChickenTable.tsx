@@ -8,6 +8,9 @@ import {
 import { ChickenData } from "../../types/ChickenData";
 import "./ChickenTable.css";
 import { setComparisonData } from "../../store/slices/comparisonSlice";
+import productsData from "../../data/products.json";
+
+const products: ChickenData[] = productsData as ChickenData[];
 
 const ChickenTable: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -31,9 +34,8 @@ const ChickenTable: React.FC = () => {
 
   // 데이터 가져오기
   useEffect(() => {
-    fetch("../../../public/data/products.json")
-      .then((response) => response.json())
-      .then((data) => dispatch(setData(data)));
+    // JSON 데이터를 직접 사용하여 Redux 상태 업데이트
+    dispatch(setData(products));
   }, [dispatch]);
 
   // filteredData 변경시 페이지 리셋
