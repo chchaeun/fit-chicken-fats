@@ -5,14 +5,33 @@ import { NutritionData, BrandAverages } from "../../types/AverageData";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 
-
 const overallAverages: NutritionData = overallAveragesData as NutritionData;
 const brandAverages: BrandAverages = brandAveragesData as BrandAverages;
+
+interface TableRowProps {
+    brand: string;
+    data: NutritionData;
+}
+
+const TableRow: React.FC<TableRowProps> = ({ brand, data }) => (
+    <tr className={brand === "전체" ? "bg-gray-100" : "bg-white"}>
+        <td className="px-4 py-2 border">{brand}</td>
+        <td className="px-4 py-2 border">{data.calories.toFixed(1)}</td>
+        <td className="px-4 py-2 border">{data.protein.toFixed(1)}</td>
+        <td className="px-4 py-2 border">{data.fat.toFixed(1)}</td>
+        <td className="px-4 py-2 border">{data.carbohydrate.toFixed(1)}</td>
+        <td className="px-4 py-2 border">{data.sugars.toFixed(1)}</td>
+        <td className="px-4 py-2 border">{data.sodium.toFixed(1)}</td>
+        <td className="px-4 py-2 border">{data.cholesterol.toFixed(1)}</td>
+        <td className="px-4 py-2 border">{data.saturated_fat.toFixed(1)}</td>
+        <td className="px-4 py-2 border">{data.weight.toFixed(1)}</td>
+    </tr>
+);
 
 const AverageTable: React.FC = () => {
     const selectedBrands = useSelector(
         (state: RootState) => state.chicken.selectedBrands
-    )
+    );
 
     return (
         <div className="container mx-auto">
@@ -34,75 +53,9 @@ const AverageTable: React.FC = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr className="bg-gray-100">
-                            <td className="px-4 py-2 border">
-                                전체
-                            </td>
-                            <td className="px-4 py-2 border">
-                                {overallAverages.calories.toFixed(1)}
-                            </td>
-                            <td className="px-4 py-2 border">
-                                {overallAverages.protein.toFixed(1)}
-                            </td>
-                            <td className="px-4 py-2 border">
-                                {overallAverages.fat.toFixed(1)}
-                            </td>
-                            <td className="px-4 py-2 border">
-                                {overallAverages.carbohydrate.toFixed(1)}
-                            </td>
-                            <td className="px-4 py-2 border">
-                                {overallAverages.sugars.toFixed(1)}
-                            </td>
-                            <td className="px-4 py-2 border">
-                                {overallAverages.sodium.toFixed(1)}
-                            </td>
-                            <td className="px-4 py-2 border">
-                                {overallAverages.cholesterol.toFixed(1)}
-                            </td>
-                            <td className="px-4 py-2 border">
-                                {overallAverages.saturated_fat.toFixed(1)}
-                            </td>
-                            <td className="px-4 py-2 border">
-                                {overallAverages.weight.toFixed(1)}
-                            </td>
-                        </tr>
+                        <TableRow brand="전체" data={overallAverages} />
                         {selectedBrands.map((brand) => (
-                            <tr key={brand} className="bg-white">
-                                <td className="px-4 py-2 border">{brand}</td>
-                                <td className="px-4 py-2 border">
-                                    {brandAverages[brand].calories.toFixed(1)}
-                                </td>
-                                <td className="px-4 py-2 border">
-                                    {brandAverages[brand].protein.toFixed(1)}
-                                </td>
-                                <td className="px-4 py-2 border">
-                                    {brandAverages[brand].fat.toFixed(1)}
-                                </td>
-                                <td className="px-4 py-2 border">
-                                    {brandAverages[brand].carbohydrate.toFixed(
-                                        1
-                                    )}
-                                </td>
-                                <td className="px-4 py-2 border">
-                                    {brandAverages[brand].sugars.toFixed(1)}
-                                </td>
-                                <td className="px-4 py-2 border">
-                                    {brandAverages[brand].sodium.toFixed(1)}
-                                </td>
-                                <td className="px-4 py-2 border">
-                                    {brandAverages[brand].cholesterol.toFixed(
-                                        1
-                                    )}
-                                </td>
-                                <td className="px-4 py-2 border">
-                                    {brandAverages[brand].saturated_fat.toFixed(
-                                        1
-                                    )}
-                                </td>
-                                <td className="px-4 py-2 border">
-                                    {brandAverages[brand].weight.toFixed(1)}
-                                </td>
-                            </tr>
+                            <TableRow key={brand} brand={brand} data={brandAverages[brand]} />
                         ))}
                     </tbody>
                 </table>
