@@ -73,7 +73,7 @@ const SearchBox: React.FC = () => {
       />
       <button
         type="button"
-        className="px-4 py-2 text-white bg-chickenPoint rounded-lg hover:bg-chickenPositive focus:outline-none focus:ring-2 focus:ring-chickenMain"
+        className="px-4 py-2 w-20 text-white bg-chickenPoint rounded-lg hover:bg-chickenPositive focus:outline-none focus:ring-2 focus:ring-chickenMain"
         onClick={handleSearch}
       >
         <span>검색</span>
