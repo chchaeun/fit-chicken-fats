@@ -12,12 +12,11 @@ import AverageTable from "./components/AverageTable/AverageTable";
 const App: React.FC = () => {
     const [showExplanation, setShowExplanation] = useState(false);
 
-    const handleMouseEnter = () => { setShowExplanation(true); };
-    const handleMouseLeave = () => { setShowExplanation(false); };
+    const toggleClick = () => { setShowExplanation(!showExplanation); };
 
     return (
         <>
-            <Header onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} />
+            <Header toggleClick={toggleClick} />
             <div className="flex justify-end">
                 {showExplanation ? <Explanation /> : null}
             </div>
