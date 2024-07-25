@@ -29,7 +29,7 @@ const App: React.FC = () => {
                             <SearchBox />
                             <ChickenTable />
                         </div>
-                        <div className="flex-shrink-0 mt-20 ml-10 lg:py-10 sm:py-5">
+                        <div className="flex-shrink-0 mt-20 ml-10 lg:py-10 sm:pt-10 sm:m-0">
                             <ComparisonTable />
                         </div>
                     </div>

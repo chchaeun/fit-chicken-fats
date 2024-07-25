@@ -4,6 +4,7 @@ import brandAveragesData from "../../data/brand_averages.json";
 import { NutritionData, BrandAverages } from "../../types/AverageData";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
+import { GiChicken } from "react-icons/gi";
 
 const overallAverages: NutritionData = overallAveragesData as NutritionData;
 const brandAverages: BrandAverages = brandAveragesData as BrandAverages;
@@ -32,10 +33,12 @@ const AverageTable: React.FC = () => {
   const selectedBrands = useSelector((state: RootState) => state.chicken.selectedBrands);
 
   return (
-    <div className="container mx-auto p-4 m-4 bg-chickenBackground rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold mb-4 text-chickenFont">평균 영양성분</h2>
+    <div className="container p-4 m-4 mx-auto rounded-lg shadow-md bg-chickenBackground">
+      <h2 className="flex mb-4 text-2xl font-bold text-chickenFont">
+        <GiChicken className="mx-1 text-3xl text-chickenPoint" />
+        평균 영양성분</h2>
       <div className="overflow-x-auto">
-        <table className="min-w-full border-collapse text-center">
+        <table className="min-w-full text-center border-collapse">
           <thead className="bg-chickenMain text-chickenFont">
             <tr>
               <th className="px-4 py-2 border-b border-chickenNeutral whitespace-nowrap">브랜드</th>

@@ -61,10 +61,10 @@ const SearchBox: React.FC = () => {
 
 
   return (
-    <div className="flex items-center justify-center p-4 m-4 w-1/2 bg-chickenBackground rounded-lg shadow-md">
+    <div className="flex items-center justify-center w-1/2 p-4 m-4 rounded-lg shadow-md bg-chickenBackground">
       <input
         type="text"
-        className="w-full p-2 mr-2 border-2 border-chickenPoint rounded-lg focus:outline-none focus:ring-2 focus:ring-chickenMain"
+        className="w-full p-2 mr-2 border-2 rounded-lg border-chickenPoint focus:outline-none focus:ring-2 focus:ring-chickenMain"
         id="keyword"
         value={query}
         onChange={handleSearchChange}
@@ -73,7 +73,7 @@ const SearchBox: React.FC = () => {
       />
       <button
         type="button"
-        className="px-4 py-2 w-20 text-white bg-chickenPoint rounded-lg hover:bg-chickenPositive focus:outline-none focus:ring-2 focus:ring-chickenMain"
+        className="w-20 px-4 py-2 text-white rounded-lg bg-chickenPoint hover:bg-chickenPositive focus:outline-none focus:ring-2 focus:ring-chickenMain"
         onClick={handleSearch}
       >
         <span>검색</span>

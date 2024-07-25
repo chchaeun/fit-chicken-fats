@@ -23,23 +23,22 @@ const ComparisonTable = () => {
     }
 
     return (
-        <div className="flex flex-col max-w-2xl mx-5 border-2 sm:max-w-full bg-chickenBackground rounded-3xl border-chickenPoint whitespace-nowrap text-chickenFont">
-            <div className="flex items-center justify-between px-10 font-bold border-b-2 sm:justify-center sm:flex-col border-b-chickenPoint sm:text-sm sm:py-5 sm:px-5">
-                <div className="flex items-center p-2 text-2xl text-chickenPoint">
-                    <GiChicken className="text-3xl" />
+        <div className="flex flex-col mx-5 border-2 lg:max-w-2xl bg-chickenBackground rounded-3xl border-chickenPoint whitespace-nowrap text-chickenFont">
+            <div className="flex items-center justify-between px-10 font-bold border-b-2 sm:justify-center sm:flex-col border-b-chickenPoint sm:text-sm sm:p-5">
+                <div className="flex items-center text-xl lg:p-5">
+                    <GiChicken className="text-3xl text-chickenPoint" />
                     <p className="px-1">선택 제품 비교</p>
-                    <GiChicken className="text-3xl" />
                 </div>
                 <div className="flex opacity-70">
                     <div
-                        className="flex items-center mr-5 cursor-pointer rounded-3xl hover:text-white hover:bg-chickenPositive sm:mx-5 sm:p-1.5"
+                        className="flex items-center mr-5 p-2 cursor-pointer rounded-3xl hover:text-white hover:bg-chickenPositive sm:mx-5 sm:p-1.5"
                         onClick={handleOnCloseButton}
                     >
                         <FiMinusSquare />
                         선택 창 숨기기
                     </div>
                     <div
-                        className="flex items-center mr-5 cursor-pointer rounded-3xl hover:text-white hover:bg-chickenNegative sm:mx-5 sm:px-1.5"
+                        className="flex items-center mr-5 p-2 cursor-pointer rounded-3xl hover:text-white hover:bg-chickenNegative sm:mx-5 sm:px-1.5"
                         onClick={handleOnClearButton}
                     >
                         <FiXSquare />
@@ -182,7 +181,7 @@ const ComparisonTable = () => {
                         </tbody>
                     </table>
                 </div>
-                <div className="py-3 mr-8 text-xs text-right">
+                <div className="py-3 mr-8 text-xs text-right lg:py-5">
                     (모든 영양성분은 100g 당 함량으로 작성됨.)
                 </div>
             </div>
