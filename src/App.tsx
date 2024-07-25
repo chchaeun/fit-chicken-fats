@@ -11,7 +11,6 @@ import AverageTable from "./components/AverageTable/AverageTable";
 
 const App: React.FC = () => {
     const [showExplanation, setShowExplanation] = useState(false);
-
     const toggleClick = () => { setShowExplanation(!showExplanation); };
 
     return (

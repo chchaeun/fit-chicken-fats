@@ -12,11 +12,7 @@ const Header: React.FC<HeaderProps> = ({ toggleClick }) => {
                 <div className="flex flex-col items-center">
                     <div className="flex items-center">
                         <a href="/">
-                            <img
-                                src={ChickenLabsLogo}
-                                alt="logo"
-                                className="w-44"
-                            />
+                            <img src={ChickenLabsLogo} alt="logo" className="w-44" />
                         </a>
                     </div>
                 </div>
