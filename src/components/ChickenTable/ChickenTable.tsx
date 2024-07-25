@@ -1,12 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../store";
-import {
-  setCurrentPage,
-  setData,
-} from "../../store/slices/chickenSlice";
+import { setCurrentPage, setData } from "../../store/slices/chickenSlice";
 import { ChickenData } from "../../types/ChickenData";
-import "./ChickenTable.css";
 import { setComparisonData } from "../../store/slices/comparisonSlice";
 import productsData from "../../data/products.json";
 
@@ -24,7 +20,6 @@ const ChickenTable: React.FC = () => {
   const itemsPerPage = 15;
   const pageNumbersPerPage = 10;
 
-  // 체크박스 선택
   const comparisonOnSelectedItems = useSelector(
     (state: RootState) => state.comparison
   );
@@ -32,18 +27,14 @@ const ChickenTable: React.FC = () => {
     dispatch(setComparisonData(item));
   };
 
-  // 데이터 가져오기
   useEffect(() => {
-    // JSON 데이터를 직접 사용하여 Redux 상태 업데이트
     dispatch(setData(products));
   }, [dispatch]);
 
-  // filteredData 변경시 페이지 리셋
   useEffect(() => {
     dispatch(setCurrentPage(1));
   }, [filteredResults, dispatch]);
 
-  // 테이블 페이징
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredResults.slice(indexOfFirstItem, indexOfLastItem);
@@ -58,30 +49,26 @@ const ChickenTable: React.FC = () => {
     pageNumbers.push(i);
   }
 
-  // 페이지 버튼 10개씩만 나타내기
   const startPage =
     Math.floor((currentPage - 1) / pageNumbersPerPage) * pageNumbersPerPage + 1;
-  const endPage = Math.min(
-    startPage + pageNumbersPerPage - 1,
-    totalPageNumbers
-  );
+  const endPage = Math.min(startPage + pageNumbersPerPage - 1, totalPageNumbers);
 
   return (
-    <div className="table-container">
-      <table className="chicken-table">
-        <thead>
+    <div className="w-full p-4 bg-chickenBackground rounded-lg shadow-md">
+      <table className="min-w-full bg-white rounded-lg text-center">
+        <thead className="bg-chickenMain text-chickenFont">
           <tr>
-            <th>선택</th>
-            <th>브랜드</th>
-            <th>제품명</th>
-            <th>단백질(g)</th>
-            <th>열량(kcal)</th>
+            <th className="py-2 px-4 border-b whitespace-nowrap">선택</th>
+            <th className="py-2 px-4 border-b whitespace-nowrap">브랜드</th>
+            <th className="py-2 px-4 border-b whitespace-nowrap">제품명</th>
+            <th className="py-2 px-4 border-b whitespace-nowrap">단백질(g)</th>
+            <th className="py-2 px-4 border-b whitespace-nowrap">열량(kcal)</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="text-chickenFont">
           {currentItems.map((item) => (
-            <tr key={item.id}>
-              <td>
+            <tr key={item.id} className="hover:bg-chickenHover">
+              <td className="py-2 px-4 border-b text-center whitespace-nowrap">
                 <input
                   type="checkbox"
                   checked={
@@ -92,29 +79,43 @@ const ChickenTable: React.FC = () => {
                   onChange={() => handleOnCheckboxChange(item)}
                 />
               </td>
-              <td>{item.brand}</td>
-              <td>{item.product_name}</td>
-              <td>{item.protein}</td>
-              <td>{item.calories}</td>
+              <td className="py-2 px-4 border-b whitespace-nowrap">{item.brand}</td>
+              <td className="py-2 px-4 border-b whitespace-nowrap">{item.product_name}</td>
+              <td className="py-2 px-4 border-b whitespace-nowrap">{item.protein.toFixed(1)}</td>
+              <td className="py-2 px-4 border-b whitespace-nowrap">{item.calories}</td>
             </tr>
           ))}
         </tbody>
       </table>
-      <div className="pagination">
+      <div className="flex justify-center mt-4">
         {startPage > 1 && (
-          <button onClick={() => paginate(startPage - 1)}>&laquo;</button>
+          <button
+            onClick={() => paginate(startPage - 1)}
+            className="mx-1 px-3 py-1 rounded bg-chickenMain text-white hover:bg-chickenPositive"
+          >
+            &laquo;
+          </button>
         )}
         {pageNumbers.slice(startPage - 1, endPage).map((number) => (
           <button
             key={number}
             onClick={() => paginate(number)}
-            className={currentPage === number ? "active" : ""}
+            className={`mx-1 px-3 py-1 rounded ${
+              currentPage === number
+                ? "bg-chickenPoint text-white"
+                : "bg-chickenMain text-white hover:bg-chickenPositive"
+            }`}
           >
             {number}
           </button>
         ))}
         {endPage < totalPageNumbers && (
-          <button onClick={() => paginate(endPage + 1)}>&raquo;</button>
+          <button
+            onClick={() => paginate(endPage + 1)}
+            className="mx-1 px-3 py-1 rounded bg-chickenMain text-white hover:bg-chickenPositive"
+          >
+            &raquo;
+          </button>
         )}
       </div>
     </div>
