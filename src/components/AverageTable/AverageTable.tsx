@@ -33,7 +33,7 @@ const AverageTable: React.FC = () => {
   const selectedBrands = useSelector((state: RootState) => state.chicken.selectedBrands);
 
   return (
-    <div className="container p-4 m-4 mx-auto rounded-lg shadow-md bg-chickenBackground">
+    <div className="container p-4 m-4 mx-auto border-2 rounded-lg shadow-md bg-chickenBackground border-chickenPoint">
       <h2 className="flex mb-4 text-2xl font-bold text-chickenFont">
         <GiChicken className="mx-1 text-3xl text-chickenPoint" />
         평균 영양성분</h2>
