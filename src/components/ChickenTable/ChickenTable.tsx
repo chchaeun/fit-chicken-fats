@@ -58,17 +58,17 @@ const ChickenTable: React.FC = () => {
       <table className="min-w-full bg-white rounded-lg text-center">
         <thead className="bg-chickenMain text-chickenFont">
           <tr>
-            <th className="py-2 px-4 border-b">선택</th>
-            <th className="py-2 px-4 border-b">브랜드</th>
-            <th className="py-2 px-4 border-b">제품명</th>
-            <th className="py-2 px-4 border-b">단백질(g)</th>
-            <th className="py-2 px-4 border-b">열량(kcal)</th>
+            <th className="py-2 px-4 border-b whitespace-nowrap">선택</th>
+            <th className="py-2 px-4 border-b whitespace-nowrap">브랜드</th>
+            <th className="py-2 px-4 border-b whitespace-nowrap">제품명</th>
+            <th className="py-2 px-4 border-b whitespace-nowrap">단백질(g)</th>
+            <th className="py-2 px-4 border-b whitespace-nowrap">열량(kcal)</th>
           </tr>
         </thead>
         <tbody className="text-chickenFont">
           {currentItems.map((item) => (
             <tr key={item.id} className="hover:bg-chickenHover">
-              <td className="py-2 px-4 border-b text-center">
+              <td className="py-2 px-4 border-b text-center whitespace-nowrap">
                 <input
                   type="checkbox"
                   checked={
@@ -79,10 +79,10 @@ const ChickenTable: React.FC = () => {
                   onChange={() => handleOnCheckboxChange(item)}
                 />
               </td>
-              <td className="py-2 px-4 border-b">{item.brand}</td>
-              <td className="py-2 px-4 border-b">{item.product_name}</td>
-              <td className="py-2 px-4 border-b">{item.protein.toFixed(1)}</td>
-              <td className="py-2 px-4 border-b">{item.calories}</td>
+              <td className="py-2 px-4 border-b whitespace-nowrap">{item.brand}</td>
+              <td className="py-2 px-4 border-b whitespace-nowrap">{item.product_name}</td>
+              <td className="py-2 px-4 border-b whitespace-nowrap">{item.protein.toFixed(1)}</td>
+              <td className="py-2 px-4 border-b whitespace-nowrap">{item.calories}</td>
             </tr>
           ))}
         </tbody>

@@ -15,16 +15,16 @@ interface TableRowProps {
 
 const TableRow: React.FC<TableRowProps> = ({ brand, data }) => (
   <tr className={brand === "전체" ? "bg-chickenHover" : "bg-white hover:bg-chickenHover"}>
-    <td className="px-4 py-2 border-b border-chickenNeutral text-chickenFont">{brand}</td>
-    <td className="px-4 py-2 border-b border-chickenNeutral text-chickenFont">{data.calories.toFixed(1)}</td>
-    <td className="px-4 py-2 border-b border-chickenNeutral text-chickenFont">{data.protein.toFixed(1)}</td>
-    <td className="px-4 py-2 border-b border-chickenNeutral text-chickenFont">{data.fat.toFixed(1)}</td>
-    <td className="px-4 py-2 border-b border-chickenNeutral text-chickenFont">{data.carbohydrate.toFixed(1)}</td>
-    <td className="px-4 py-2 border-b border-chickenNeutral text-chickenFont">{data.sugars.toFixed(1)}</td>
-    <td className="px-4 py-2 border-b border-chickenNeutral text-chickenFont">{data.sodium.toFixed(1)}</td>
-    <td className="px-4 py-2 border-b border-chickenNeutral text-chickenFont">{data.cholesterol.toFixed(1)}</td>
-    <td className="px-4 py-2 border-b border-chickenNeutral text-chickenFont">{data.saturated_fat.toFixed(1)}</td>
-    <td className="px-4 py-2 border-b border-chickenNeutral text-chickenFont">{data.weight.toFixed(1)}</td>
+    <td className="px-4 py-2 border-b border-chickenNeutral text-chickenFont whitespace-nowrap">{brand}</td>
+    <td className="px-4 py-2 border-b border-chickenNeutral text-chickenFont whitespace-nowrap">{data.calories.toFixed(1)}</td>
+    <td className="px-4 py-2 border-b border-chickenNeutral text-chickenFont whitespace-nowrap">{data.protein.toFixed(1)}</td>
+    <td className="px-4 py-2 border-b border-chickenNeutral text-chickenFont whitespace-nowrap">{data.fat.toFixed(1)}</td>
+    <td className="px-4 py-2 border-b border-chickenNeutral text-chickenFont whitespace-nowrap">{data.carbohydrate.toFixed(1)}</td>
+    <td className="px-4 py-2 border-b border-chickenNeutral text-chickenFont whitespace-nowrap">{data.sugars.toFixed(1)}</td>
+    <td className="px-4 py-2 border-b border-chickenNeutral text-chickenFont whitespace-nowrap">{data.sodium.toFixed(1)}</td>
+    <td className="px-4 py-2 border-b border-chickenNeutral text-chickenFont whitespace-nowrap">{data.cholesterol.toFixed(1)}</td>
+    <td className="px-4 py-2 border-b border-chickenNeutral text-chickenFont whitespace-nowrap">{data.saturated_fat.toFixed(1)}</td>
+    <td className="px-4 py-2 border-b border-chickenNeutral text-chickenFont whitespace-nowrap">{data.weight.toFixed(1)}</td>
   </tr>
 );
 
@@ -38,16 +38,16 @@ const AverageTable: React.FC = () => {
         <table className="min-w-full border-collapse text-center">
           <thead className="bg-chickenMain text-chickenFont">
             <tr>
-              <th className="px-4 py-2 border-b border-chickenNeutral">브랜드</th>
-              <th className="px-4 py-2 border-b border-chickenNeutral">에너지(kcal)</th>
-              <th className="px-4 py-2 border-b border-chickenNeutral">단백질(g)</th>
-              <th className="px-4 py-2 border-b border-chickenNeutral">지방(g)</th>
-              <th className="px-4 py-2 border-b border-chickenNeutral">탄수화물(g)</th>
-              <th className="px-4 py-2 border-b border-chickenNeutral">당류(g)</th>
-              <th className="px-4 py-2 border-b border-chickenNeutral">나트륨(mg)</th>
-              <th className="px-4 py-2 border-b border-chickenNeutral">콜레스테롤(mg)</th>
-              <th className="px-4 py-2 border-b border-chickenNeutral">포화지방산(g)</th>
-              <th className="px-4 py-2 border-b border-chickenNeutral">중량(g)</th>
+              <th className="px-4 py-2 border-b border-chickenNeutral whitespace-nowrap">브랜드</th>
+              <th className="px-4 py-2 border-b border-chickenNeutral whitespace-nowrap">에너지(kcal)</th>
+              <th className="px-4 py-2 border-b border-chickenNeutral whitespace-nowrap">단백질(g)</th>
+              <th className="px-4 py-2 border-b border-chickenNeutral whitespace-nowrap">지방(g)</th>
+              <th className="px-4 py-2 border-b border-chickenNeutral whitespace-nowrap">탄수화물(g)</th>
+              <th className="px-4 py-2 border-b border-chickenNeutral whitespace-nowrap">당류(g)</th>
+              <th className="px-4 py-2 border-b border-chickenNeutral whitespace-nowrap">나트륨(mg)</th>
+              <th className="px-4 py-2 border-b border-chickenNeutral whitespace-nowrap">콜레스테롤(mg)</th>
+              <th className="px-4 py-2 border-b border-chickenNeutral whitespace-nowrap">포화지방산(g)</th>
+              <th className="px-4 py-2 border-b border-chickenNeutral whitespace-nowrap">중량(g)</th>
             </tr>
           </thead>
           <tbody>
