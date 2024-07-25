@@ -7,7 +7,7 @@ const Footer = () => {
     }
     
     return (
-        <div className="flex justify-between border-t-2 border-t-chickenPoint">
+        <div className="flex justify-between mt-10 border-t-2 border-t-chickenPoint">
             <FaGithubSquare
                 className="m-3 text-4xl rounded text-chickenMain hover:text-white hover:bg-chickenPoint"
                 onClick={newPageGithub}
