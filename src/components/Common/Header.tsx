@@ -7,7 +7,7 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ toggleClick }) => {
     return (
-        <div className="w-full mb-2 border-b-2 border-b-chickenPoint">
+        <div className="w-full mb-6 border-b-2 border-b-chickenPoint">
             <div className="flex items-center justify-between px-4 text-3xl text-chickenMain">
                 <div className="flex flex-col items-center">
                     <div className="flex items-center">

@@ -61,7 +61,7 @@ const SearchBox: React.FC = () => {
 
 
   return (
-    <div className="flex items-center justify-center w-1/2 p-4 m-4 border-2 rounded-lg shadow-md bg-chickenBackground border-chickenPoint">
+    <div className="flex items-center justify-center w-1/2 p-4 m-4 border-2 rounded-lg shadow-md mb-7 bg-chickenBackground border-chickenPoint">
       <input
         type="text"
         className="w-full p-2 mr-2 border-2 rounded-lg border-chickenMain focus:outline-none focus:ring-2 focus:ring-chickenMain"
