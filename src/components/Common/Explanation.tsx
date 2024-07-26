@@ -1,14 +1,14 @@
 import React from "react";
-import { GrHelpBook } from "react-icons/gr";
+import { GiChicken } from "react-icons/gi";
 
 const Explanation: React.FC = () => {
     return (
         <div className="absolute z-10 p-1 text-sm rounded-md shadow-xl text-chickenFont bg-chickenPoint right-6 top-20 opacity-95">
             <div className="rounded-md bg-chickenBackground">
-                <div className="flex items-center justify-center p-3 text-2xl font-bold border-b-2 border-chickenPoint text-chickenPoint">
-                    <GrHelpBook />
+                <div className="flex items-center justify-center p-3 text-2xl font-bold border-b-2 border-chickenPoint">
+                    <GiChicken className="text-3xl text-chickenPoint" />
                     <p className="px-2">사용 안내</p>
-                    <GrHelpBook />
+                    <GiChicken className="text-3xl text-chickenPoint" />
                 </div>
                 <div className="p-3">
                     📌 페이지 번호를 누르며 전체 제품 목록을 확인 할 수

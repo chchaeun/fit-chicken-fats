@@ -14,23 +14,24 @@ const App: React.FC = () => {
 
     const handleMouseEnter = () => { setShowExplanation(true); };
     const handleMouseLeave = () => { setShowExplanation(false); };
+    const toggleClick = () => { setShowExplanation(!showExplanation); };
 
     return (
         <>
-            <Header onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} />
+            <Header onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} toggleClick={toggleClick} />
             <div className="flex justify-end">
                 {showExplanation ? <Explanation /> : null}
             </div>
             <div className="flex flex-col items-center justify-center p-1 px-3">
-                <div className="flex flex-col w-4/5">
+                <div className="flex flex-col w-11/12">
                     <ProductsFilter />
                     <AverageTable />
-                    <div className="flex w-full">
+                    <div className="flex w-full sm:flex-col">
                         <div className="flex flex-col items-center flex-grow">
                             <SearchBox />
                             <ChickenTable />
                         </div>
-                        <div className="mt-20 ml-10 lg:py-10 sm:w-full sm:py-5 flex-shrink-0">
+                        <div className="flex-shrink-0 mt-20 ml-10 lg:py-10 sm:pt-10 sm:m-0">
                             <ComparisonTable />
                         </div>
                     </div>

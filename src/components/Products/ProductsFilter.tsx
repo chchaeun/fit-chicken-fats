@@ -54,19 +54,19 @@ const ProductsFilter: React.FC = () => {
     <div className="p-5">
       <div className="flex items-start mb-4">
         <div
-          className="flex items-center p-2 rounded mr-2 flex-shrink-0 bg-chickenBackground border-chickenPoint border-2"
+          className="flex items-center flex-shrink-0 p-2 mr-2 border-2 rounded bg-chickenBackground border-chickenPoint"
           style={{ height: '3rem' }}
         >
           <h2 className="mr-2 whitespace-nowrap text-chickenFont">브랜드</h2>
           <button
-            className="bg-chickenPoint p-2 rounded"
+            className="p-2 rounded bg-chickenPoint"
             onClick={() => setShowAllBrands(!showAllBrands)}
           >
             {showAllBrands ? <FaMinus size={12} color="#FFFEC9"/> : <FaPlus size={12} color="#FFFEC9"/>}
           </button>
         </div>
         <div
-          className={`flex flex-wrap items-center gap-2 flex-grow p-3 rounded overflow-hidden transition-all duration-300 bg-chickenBackground border-chickenPoint border-chickenPoint border-2 ${
+          className={`flex flex-wrap items-center gap-2 flex-grow p-3 rounded overflow-hidden transition-all duration-300 bg-chickenBackground border-chickenPoint border-2 ${
             showAllBrands ? "h-auto" : "h-12"
           }`}
         >
@@ -79,7 +79,7 @@ const ProductsFilter: React.FC = () => {
                 onChange={() => handleCheckboxChange(brand)}
                 checked={selectedBrands.includes(brand)}
               />
-              <div className="w-4 h-4 mr-2 border-2 rounded cursor-pointer peer-checked:bg-chickenPoint border-chickenPoint flex items-center justify-center">
+              <div className="flex items-center justify-center w-4 h-4 mr-2 border-2 rounded cursor-pointer peer-checked:bg-chickenPoint border-chickenPoint">
                 {selectedBrands.includes(brand) && <FaCheck className="text-white" size={12} />}
               </div>
               {brand || "기타"}

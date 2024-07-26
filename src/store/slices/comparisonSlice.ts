@@ -37,9 +37,7 @@ const initialState: ComparisonState = {
 
 const calculateMaxValues = (data: ChickenData[]) => {
     const mathMax = (data: ChickenData[], property: keyof ChickenData) => {
-        return data.length > 1
-            ? Math.max(...data.map((i) => i[property] as number))
-            : null;
+        return data.length > 1 ? Math.max(...data.map((i) => i[property] as number)) : null;
     };
     return {
         protein: mathMax(data, "protein"),
@@ -47,9 +45,7 @@ const calculateMaxValues = (data: ChickenData[]) => {
 };
 const calculateMinValues = (data: ChickenData[]) => {
     const mathMin = (data: ChickenData[], property: keyof ChickenData) => {
-        return data.length > 1
-            ? Math.min(...data.map((i) => i[property] as number))
-            : null;
+        return data.length > 1 ? Math.min(...data.map((i) => i[property] as number)) : null;
     };
 
     return {
@@ -68,14 +64,10 @@ const comparisonSlice = createSlice({
     initialState,
     reducers: {
         setComparisonData: (state, { payload }: PayloadAction<ChickenData>) => {
-            const isComparison = state.comparisonData.find(
-                (item) => item.id === payload.id
-            );
+            const isComparison = state.comparisonData.find((item) => item.id === payload.id);
 
             if (isComparison) {
-                state.comparisonData = state.comparisonData.filter(
-                    (item) => item.id !== payload.id
-                );
+                state.comparisonData = state.comparisonData.filter((item) => item.id !== payload.id);
             } else {
                 if (state.comparisonData.length >= 20) {
                     alert("최대 20개까지만 선택할 수 있습니다.");
@@ -86,8 +78,6 @@ const comparisonSlice = createSlice({
 
             state.maxValues = calculateMaxValues(state.comparisonData);
             state.minValues = calculateMinValues(state.comparisonData);
-
-            // 사이드바 활성화 여부 업데이트
             state.comparisonActive = state.comparisonData.length > 0;
         },
         setComparisonActive: (state, action: PayloadAction<boolean>) => {
@@ -102,6 +92,5 @@ const comparisonSlice = createSlice({
     },
 });
 
-export const { setComparisonData, setComparisonActive, clearComparisonData } =
-    comparisonSlice.actions;
+export const { setComparisonData, setComparisonActive, clearComparisonData } = comparisonSlice.actions;
 export const comparisonReducer = comparisonSlice.reducer;
